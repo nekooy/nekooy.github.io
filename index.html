@@ -1,0 +1,425 @@
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>二次元个人主页</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome - 使用更可靠的CDN源 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- 谷歌字体 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  
+  <!-- Tailwind 配置 - 改为橙红配色 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FF5722', // 橙色作为主色调
+            secondary: '#E53935', // 红色作为辅助色
+            accent: '#FF9800', // 亮橙色作为强调色
+            dark: '#1F2937',
+            light: '#F9FAFB'
+          },
+          fontFamily: {
+            inter: ['Inter', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+  
+  <!-- 自定义工具类 -->
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .text-shadow {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+      .anime-border {
+        border-image: linear-gradient(45deg, theme('colors.primary'), theme('colors.secondary')) 1;
+      }
+      .card-hover {
+        transition: all 0.3s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-5px);
+      }
+    }
+  </style>
+  
+  <style>
+    /* 全局样式 */
+    body {
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+    }
+    
+    /* 动画效果 */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    
+    .fade-in.appear {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* 背景图案 - 改为橙色系 */
+    .bg-pattern {
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FF5722' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+  </style>
+</head>
+<body class="bg-light bg-pattern text-dark font-inter">
+  <!-- 导航栏 -->
+  <header id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/80 backdrop-blur-md shadow-sm">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="#" class="text-2xl font-bold text-primary flex items-center">
+        <span class="mr-2">🍁</span>
+        <span>Nekooy</span>
+      </a>
+      
+      <!-- 桌面导航 - 移除收藏和作品链接 -->
+      <nav class="hidden md:flex space-x-8">
+        <a href="#home" class="font-medium hover:text-primary transition-colors">首页</a>
+        <a href="#about" class="font-medium hover:text-primary transition-colors">关于我</a>
+        <a href="#contact" class="font-medium hover:text-primary transition-colors">联系我</a>
+      </nav>
+      
+      <!-- 移动端菜单按钮 -->
+      <button id="menu-toggle" class="md:hidden text-dark focus:outline-none">
+        <i class="fa fa-bars text-xl"></i>
+      </button>
+    </div>
+    
+    <!-- 移动端导航菜单 - 移除收藏和作品链接 -->
+    <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg absolute w-full">
+      <div class="container mx-auto px-4 py-3 flex flex-col space-y-4">
+        <a href="#home" class="font-medium hover:text-primary transition-colors py-2">首页</a>
+        <a href="#about" class="font-medium hover:text-primary transition-colors py-2">关于我</a>
+        <a href="#contact" class="font-medium hover:text-primary transition-colors py-2">联系</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 英雄区域 -->
+    <section id="home" class="pt-32 pb-20 md:pt-40 md:pb-32 relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 -z-10"></div>
+      
+      <!-- 装饰元素 - 改为橙红色系 -->
+      <div class="absolute -top-10 -left-10 w-40 h-40 bg-primary/20 rounded-full blur-3xl"></div>
+      <div class="absolute top-1/2 -right-20 w-60 h-60 bg-secondary/20 rounded-full blur-3xl"></div>
+      
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row items-center">
+          <div class="md:w-1/2 mb-10 md:mb-0 fade-in">
+            <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold leading-tight text-shadow">
+              你好，我是<br>
+              <span class="text-primary">Nekooy</span>
+            </h1>
+            <p class="mt-6 text-lg md:text-xl text-gray-600 max-w-lg">
+              热衷于二次元文化，喜欢动漫、游戏和插画创作。欢迎来到我的个人主页，一起探索二次元的奇妙世界！
+            </p>
+            <div class="mt-8 flex flex-wrap gap-4">
+              <a href="https://nav.nekooy.com/" class="px-20 py-3 bg-primary text-white rounded-full shadow-lg hover:bg-primary/90 transition-all transform hover:-translate-y-1">
+                SOME导航
+              </a>
+              <a href="https://blog.nekooy.com/" class="px-20 py-3 bg-white text-primary border border-primary rounded-full shadow-md hover:bg-primary/5 transition-all transform hover:-translate-y-1">
+                Nekooy's 博客
+              </a>
+            </div>
+            
+            <div class="mt-10 flex space-x-5">
+              <a href="#" class="">
+                <i class=""></i>
+              </a>
+              
+              </a>
+            </div>
+          </div>
+          <div class="md:w-1/2 flex justify-center fade-in">
+            <div class="relative">
+              <!-- 头像 -->
+              <div class="w-64 h-64 md:w-80 md:h-80 rounded-full border-4 border-white shadow-xl overflow-hidden">
+                <img src="https://lain.bgm.tv/pic/user/l/000/75/28/752843.jpg" alt="二次元风格头像" class="w-full h-full object-cover">
+              </div>
+              
+              <!-- 装饰元素 - 改为橙红色系 -->
+              <div class="absolute -bottom-5 -right-5 w-24 h-24 bg-secondary rounded-full flex items-center justify-center text-white text-2xl shadow-lg">
+                <i class="fa fa-heart"></i>
+              </div>
+              <div class="absolute -top-5 -left-5 w-20 h-20 bg-accent rounded-full flex items-center justify-center text-white text-2xl shadow-lg">
+                <i class="fa fa-paint-brush"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 关于我 -->
+    <section id="about" class="py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16 fade-in">
+          <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold">关于我</h2>
+          <div class="w-20 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
+        </div>
+        
+        <div class="flex flex-col md:flex-row gap-12 items-center">
+          <div class="md:w-1/2 fade-in">
+            <div class="relative">
+              <!-- 修改图片样式，截去下面五个像素的内容 -->
+              <img src="http://bgm.tv/chart/img/752843" alt="我的照片" class="w-full h-auto shadow-xl object-cover" style="object-position: 0 +35px;">
+              <!-- 装饰元素 - 改为橙色 -->
+              <div class="absolute -bottom-6 -right-6 w-40 h-40 border-4 border-primary rounded-lg -z-10"></div>
+            </div>
+          </div>
+          
+          <div class="md:w-1/2 fade-in">
+            <h3 class="text-2xl font-bold mb-4">大家好！我是动漫迷</h3>
+            <p class="text-gray-600 mb-6">
+              我从小就对二次元文化有着浓厚的兴趣，从经典动漫到最新番剧，都有所涉猎。我喜欢动漫中丰富多彩的世界观和个性鲜明的角色，它们给了我很多灵感和力量。
+            </p>
+            <p class="text-gray-600 mb-8">
+              除了看动漫，我还喜欢绘制插画、玩游戏，偶尔也会尝试cosplay。这个主页是我分享自己兴趣爱好的地方，希望能认识更多志同道合的朋友。
+            </p>
+            
+            <!-- 兴趣爱好 -->
+            <div class="mb-8">
+              <h4 class="text-xl font-semibold mb-4">我的兴趣</h4>
+              <div class="flex flex-wrap gap-3">
+                <span class="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm">动漫</span>
+                <span class="px-4 py-2 bg-secondary/10 text-secondary rounded-full text-sm">插画</span>
+                <span class="px-4 py-2 bg-accent/10 text-accent rounded-full text-sm">游戏</span>
+                <span class="px-4 py-2 bg-red-100 text-red-600 rounded-full text-sm">cosplay</span>
+                <span class="px-4 py-2 bg-yellow-100 text-yellow-600 rounded-full text-sm">手办</span>
+                <span class="px-4 py-2 bg-orange-100 text-orange-600 rounded-full text-sm">漫画</span>
+              </div>
+            </div>
+            
+            <!-- 统计数据 - 改为橙红色系 -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div class="text-center p-4 bg-gray-50 rounded-lg shadow-sm">
+                <div class="text-3xl font-bold text-primary">1000+</div>
+                <div class="text-gray-500 text-sm">收藏动漫</div>
+              </div>
+              <div class="text-center p-4 bg-gray-50 rounded-lg shadow-sm">
+                <div class="text-3xl font-bold text-secondary">10+</div>
+                <div class="text-gray-500 text-sm">插画作品</div>
+              </div>
+              <div class="text-center p-4 bg-gray-50 rounded-lg shadow-sm">
+                <div class="text-3xl font-bold text-accent">30+</div>
+                <div class="text-gray-500 text-sm">游戏通关</div>
+              </div>
+              <div class="text-center p-4 bg-gray-50 rounded-lg shadow-sm">
+                <div class="text-3xl font-bold text-red-500">1+</div>
+                <div class="text-gray-500 text-sm">cosplay</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 留言板 -->
+    <section id="contact" class="py-20 bg-gradient-to-br from-primary/5 to-secondary/5">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16 fade-in">
+          <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold">联系我</h2>
+          <p class="mt-4 text-gray-600 max-w-2xl mx-auto">
+            如果你也喜欢二次元文化，或者对我的作品感兴趣，欢迎随时联系我，一起交流讨论！
+          </p>
+          <div class="w-20 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
+        </div>
+        
+        <!-- 添加 flex 和 justify-center 类使内容居中 -->
+        <div class="flex justify-center">
+          <div class="lg:w-1/2 fade-in">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+              <!-- 联系方式卡片 - 改为橙红色系 -->
+              <div class="bg-white p-6 rounded-xl shadow-md flex items-start">
+                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4 flex-shrink-0">
+                  <i class="fa fa-envelope text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-lg mb-1">电子邮箱</h4>
+                  <p class="text-gray-600">lovelyasuka@outlook.com</p>
+                </div>
+              </div>
+              
+              <div class="bg-white p-6 rounded-xl shadow-md flex items-start">
+                <div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center text-secondary mr-4 flex-shrink-0">
+                  <i class="fa fa-github text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-lg mb-1">GitHub</h4>
+                  <p class="text-gray-600">nekooy</p>
+                </div>
+              </div>
+              
+              <div class="bg-white p-6 rounded-xl shadow-md flex items-start">
+                <div class="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center text-accent mr-4 flex-shrink-0">
+                  <i class="fa fa-map-marker text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-lg mb-1">所在地</h4>
+                  <p class="text-gray-600">二次元世界</p>
+                </div>
+              </div>
+              
+              <div class="bg-white p-6 rounded-xl shadow-md flex items-start">
+                <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center text-red-500 mr-4 flex-shrink-0">
+                  <i class="fa fa-clock-o text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-lg mb-1">在线时间</h4>
+                  <p class="text-gray-600">每天 00:00 - 24:00</p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- 社交媒体 - 只保留哔哩哔哩 -->
+            <div class="bg-white p-6 rounded-xl shadow-md">
+              <h3 class="text-xl font-bold mb-4">点击以关注我的社交媒体</h3>
+              <p class="text-gray-600 mb-6">在这些平台上可以看到我的最新动态和作品</p>
+              
+              <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                <a href="#" class="flex flex-col items-center p-4 bg-gray-50 rounded-lg hover:bg-primary hover:text-white transition-all">
+                  <img src="https://www.bilibili.com/favicon.ico" alt="哔哩哔哩图标" class="w-6 h-6 mb-2">
+                  <span>哔哩哔哩</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- 页脚 -->
+  <footer class="bg-dark text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+        <a href="#" class="text-2xl font-bold flex items-center mb-4 md:mb-0">
+          <span class="mr-2">🍁</span>
+          <span>Nekooy</span>
+        </a>
+        
+        <div class="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <p class="text-gray-400 text-sm mb-4 md:mb-0">
+          © 2023 Nekooy个人主页. 保留所有权利.
+        </p></div>
+        
+
+
+
+
+        <div class="flex space-x-6">
+          <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">隐私政策</a>
+          <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">使用条款</a>
+          <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">关于本站</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- 返回顶部按钮 - 改为橙色 -->
+  <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 rounded-full bg-primary text-white shadow-lg flex items-center justify-center opacity-0 invisible transition-all z-50 hover:bg-primary/90">
+    <i class="fa fa-arrow-up"></i>
+  </button>
+  
+  <!-- JavaScript -->
+  <script>
+    // 移动端菜单切换
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    
+    // 导航栏滚动效果
+    const navbar = document.getElementById('navbar');
+    let lastScrollTop = 0;
+    
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      if (scrollTop > 50) {
+        navbar.classList.add('py-2', 'shadow-md');
+        navbar.classList.remove('py-3', 'shadow-sm');
+      } else {
+        navbar.classList.add('py-3', 'shadow-sm');
+        navbar.classList.remove('py-2', 'shadow-md');
+      }
+      
+      lastScrollTop = scrollTop;
+    });
+    
+    // 滚动动画
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    const fadeInObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('appear');
+          fadeInObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    fadeElements.forEach(element => {
+      fadeInObserver.observe(element);
+    });
+    
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // 关闭移动端菜单
+        if (!mobileMenu.classList.contains('hidden')) {
+          mobileMenu.classList.add('hidden');
+        }
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    
+    // 返回顶部按钮
+    const backToTopButton = document.getElementById('back-to-top');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.remove('opacity-0', 'invisible');
+        backToTopButton.classList.add('opacity-100', 'visible');
+      } else {
+        backToTopButton.classList.add('opacity-0', 'invisible');
+        backToTopButton.classList.remove('opacity-100', 'visible');
+      }
+    });
+    
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  </script>
+</body>
+</html>
