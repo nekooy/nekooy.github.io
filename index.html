@@ -5,12 +5,11 @@
   <title>Nekooy个人主页</title>
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Font Awesome - 使用更可靠的CDN源 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <!-- 谷歌字体 -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
-
 
   <!-- Tailwind 配置 - 改为橙红配色 -->
   <script>
@@ -84,7 +83,8 @@
     <div class="container mx-auto px-4 py-3 flex justify-between items-center">
       <a href="#" class="text-2xl font-bold text-primary flex items-center">
         <span class="mr-2">🍁</span>
-        <span>Nekooy  --若显示异常请尝试刷新或按F5</span>
+        <span>Nekooy</span>
+        <span style="color: gray; font-size: 15px;">（若显示异常请刷新或按F5）</span>
       </a>
       
       <!-- 桌面导航 - 移除收藏和作品链接 -->
@@ -140,7 +140,6 @@
             
             <div class="mt-10 flex space-x-5">
               <a href="#" class="">
-                <i class=""></i>
               </a>
               
               </a>
@@ -155,10 +154,10 @@
               
               <!-- 装饰元素 - 改为橙红色系 -->
               <div class="absolute -bottom-5 -right-5 w-24 h-24 bg-secondary rounded-full flex items-center justify-center text-white text-2xl shadow-lg">
-                <i class="fa fa-heart"></i>
+                <i class="fas fa-heart"></i>
               </div>
               <div class="absolute -top-5 -left-5 w-20 h-20 bg-accent rounded-full flex items-center justify-center text-white text-2xl shadow-lg">
-                <i class="fa fa-paint-brush"></i>
+                <i class="fas fa-paint-brush"></i>
               </div>
             </div>
           </div>
@@ -248,7 +247,7 @@
               <!-- 联系方式卡片 - 改为橙红色系 -->
               <div class="bg-white p-6 rounded-xl shadow-md flex items-start">
                 <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4 flex-shrink-0">
-                  <i class="fa fa-envelope text-xl"></i>
+                  <i class="fas fa-envelope"></i>
                 </div>
                 <div>
                   <h4 class="font-bold text-lg mb-1">电子邮箱</h4>
@@ -258,7 +257,7 @@
               
               <div class="bg-white p-6 rounded-xl shadow-md flex items-start">
                 <div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center text-secondary mr-4 flex-shrink-0">
-                  <i class="fa fa-github text-xl"></i>
+                  <i class="fab fa-github"></i>
                 </div>
                 <div>
                   <h4 class="font-bold text-lg mb-1">GitHub</h4>
@@ -268,7 +267,7 @@
               
               <div class="bg-white p-6 rounded-xl shadow-md flex items-start">
                 <div class="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center text-accent mr-4 flex-shrink-0">
-                  <i class="fa fa-map-marker text-xl"></i>
+                  <i class="fas fa-map-marker-alt"></i>
                 </div>
                 <div>
                   <h4 class="font-bold text-lg mb-1">所在地</h4>
@@ -278,7 +277,7 @@
               
               <div class="bg-white p-6 rounded-xl shadow-md flex items-start">
                 <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center text-red-500 mr-4 flex-shrink-0">
-                  <i class="fa fa-clock-o text-xl"></i>
+                  <i class="fas fa-clock"></i>
                 </div>
                 <div>
                   <h4 class="font-bold text-lg mb-1">在线时间</h4>
@@ -293,7 +292,7 @@
               <p class="text-gray-600 mb-6">在这些平台上可以看到我的最新动态和作品</p>
               
               <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                <a href="#" class="flex flex-col items-center p-4 bg-gray-50 rounded-lg hover:bg-primary hover:text-white transition-all">
+                <a href="https://space.bilibili.com/1519363375" class="flex flex-col items-center p-4 bg-gray-50 rounded-lg hover:bg-primary hover:text-white transition-all">
                   <img src="https://www.bilibili.com/favicon.ico" alt="哔哩哔哩图标" class="w-6 h-6 mb-2">
                   <span>哔哩哔哩</span>
                 </a>
@@ -311,12 +310,12 @@
       <div class="flex flex-col md:flex-row justify-between items-center mb-8">
         <a href="#" class="text-2xl font-bold flex items-center mb-4 md:mb-0">
           <span class="mr-2">🍁</span>
-          <span>贰拾喵-Nekooy</span>
+          <span>贰拾喵Nekooy</span>
         </a>
         
         <div class="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center">
         <p class="text-gray-400 text-sm mb-4 md:mb-0">
-          © 2025 Nekooy个人主页. 保留所有权利.
+          © 2025 Nekooy个人主页. 保留所有权利. 
         </p></div>
         
 
@@ -334,7 +333,7 @@
   
   <!-- 返回顶部按钮 - 改为橙色 -->
   <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 rounded-full bg-primary text-white shadow-lg flex items-center justify-center opacity-0 invisible transition-all z-50 hover:bg-primary/90">
-    <i class="fa fa-arrow-up"></i>
+    <i class="fas fa-arrow-up"></i>
   </button>
   
   <!-- JavaScript -->
