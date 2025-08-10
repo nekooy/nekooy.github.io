@@ -27,19 +27,19 @@
     <style type="text/tailwindcss">
         @layer utilities {
             .search-container {
-                @apply border border-gray-200 rounded-full overflow-hidden flex w-full max-w-2xl transition-all duration-200 ease-in-out;
+                @apply border-4 border-black rounded-full overflow-hidden flex w-full max-w-2xl transition-all duration-200 ease-in-out;
                 /* 谷歌搜索框经典阴影效果 - 更柔和自然 */
                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0);
             }
             .search-btn {
-                @apply bg-gray-50 hover:bg-gray-100 text-gray-700 font-medium py-2.5 transition duration-150 ease-in-out focus:outline-none border-l border-gray-200 flex items-center justify-center;
+                @apply bg-gray-50 hover:bg-gray-100 text-gray-700 font-medium py-2.5 transition duration-150 ease-in-out focus:outline-none border-black flex items-center justify-center;
                 width: 100px; /* 固定右侧按钮宽度 */
             }
             .search-input {
                 @apply flex-grow px-4 py-2.5 bg-transparent focus:outline-none text-base;
             }
             .select-dropdown {
-                @apply bg-gray-50 hover:bg-gray-100 text-gray-700 font-medium py-2.5 transition duration-150 ease-in-out focus:outline-none border-r border-gray-200 appearance-none;
+                @apply bg-gray-50 hover:bg-gray-100 text-gray-700 font-medium py-2.5 transition duration-150 ease-in-out focus:outline-none border-black appearance-none;
                 background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='23' height='23' viewBox='0 0 24 24' fill='none' stroke='%235f6368' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
                 background-repeat: no-repeat;
                 /* 调整箭头位置，居中显示 */
@@ -48,19 +48,22 @@
                 width: 100px; /* 固定左侧下拉菜单宽度，与右侧按钮一致 */
                 text-align: center;
             }
+            
+
         }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen flex flex-col">
     <!-- 顶部导航 -->
     <header class="flex justify-between items-center p-4">
-        <!-- 左上角文字 -->
-        <div class="text-gray-600 text-sm">异常请刷新</div>
+        <!-- 桌面端导航 -->
+        <div class="desktop-nav text-gray-600 text-sm">异常请刷新</div>
         
-        <!-- 右上角链接 -->
-        <div class="flex items-center">
+        <div class="desktop-nav flex items-center">
             <a href="#" class="text-gray-600 hover:text-gray-900 text-sm mr-6">关于</a>
         </div>
+        
+
     </header>
 
     <!-- 主要内容 - 调整到黄金比例位置 -->
@@ -95,52 +98,65 @@
                     autocomplete="off"
                 >
                 <button type="submit" class="search-btn">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="mr-1"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg> 搜索
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                 </button>
             </form>
         </div>
         <!-- 快速访问圆形图标 -->
         <section class="w-full max-w-3xl mx-auto px-4 mt-8 flex-grow flex flex-col justify-center">
-        <div class="flex justify-center space-x-8">
-            <!-- 图标1 - 图片 -->
-            <a href="https://bilibili.com" class="flex flex-col items-center">
-                <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-gray-200 flex items-center justify-center mb-2">
-                    <img src="https://p3-pc.douyinpic.com/img/aweme-avatar/tos-cn-i-0813_o0Eg7PAPIvjID3mCjQaiiiop25BZzvAkAAyA8~c5_300x300.jpeg?from=2956013662">
-                </div>
-                <span class="text-sm text-gray-700">自己</span>
-            </a>
+        <div class="flex flex-col items-center space-y-4">
+            <!-- 第一行：三个图标 -->
+            <div class="flex justify-center space-x-8">
+                <!-- 图标1 - 图片 -->
+                <a href="https://bilibili.com" class="flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-gray-200 flex items-center justify-center mb-2">
+                        <img src="https://p3-pc.douyinpic.com/img/aweme-avatar/tos-cn-i-0813_o0Eg7PAPIvjID3mCjQaiiiop25BZzvAkAAyA8~c5_300x300.jpeg?from=2956013662">
+                    </div>
+                    <span class="text-sm text-gray-700">自己</span>
+                </a>
 
-            <!-- 图标1 - 图片 -->
-            <a href="https://blog.nekooy.com" class="flex flex-col items-center">
-                <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-gray-200 flex items-center justify-center mb-2">
-                    <img src="https://img2.baidu.com/it/u=456909057,3947566805&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500">
-                </div>
-                <span class="text-sm text-gray-700">博客</span>
-            </a>
+                <!-- 图标2 - 图片 -->
+                <a href="https://blog.nekooy.com" class="flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-gray-200 flex items-center justify-center mb-2">
+                        <img src="https://img2.baidu.com/it/u=456909057,3947566805&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500">
+                    </div>
+                    <span class="text-sm text-gray-700">博客</span>
+                </a>
 
-            <!-- 图标1 - 图片 -->
-            <a href="https://space.bilibili.com/1519363375" class="flex flex-col items-center">
-                <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-gray-200 flex items-center justify-center mb-2">
-                    <img src="https://www.bilibili.com/favicon.ico">
-                </div>
-                <span class="text-sm text-gray-700">bilibili</span>
-            </a>
+                <!-- 图标3 - 图片 -->
+                <a href="https://space.bilibili.com/1519363375" class="flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-gray-200 flex items-center justify-center mb-2">
+                        <img src="https://www.bilibili.com/favicon.ico">
+                    </div>
+                    <span class="text-sm text-gray-700">bilibili</span>
+                </a>
+            </div>
+            
+            <!-- 第二行：两个图标 -->
+            <div class="flex justify-center space-x-8">
+                <!-- 图标4 - 图片 -->
+                <a href="https://github.com/nekooy" class="flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-gray-200 flex items-center justify-center mb-2">
+                        <img src="https://img0.baidu.com/it/u=1214586059,3252340186&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500">
+                    </div>
+                    <span class="text-sm text-gray-700">GitHub</span>
+                </a>
 
-            <!-- 图标1 - 图片 -->
-            <a href="https://github.com/nekooy" class="flex flex-col items-center">
-                <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-gray-200 flex items-center justify-center mb-2">
-                    <img src="https://img0.baidu.com/it/u=1214586059,3252340186&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500">
-                </div>
-                <span class="text-sm text-gray-700">GitHub</span>
-            </a>
-
-            <!-- 图标1 - 图片 -->
-            <a href="https://blog.nekooy.com/link.html" class="flex flex-col items-center">
-                <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-gray-200 flex items-center justify-center mb-2">
-                    <img src="https://img0.baidu.com/it/u=3628310093,4137877932&fm=253&fmt=auto&app=120&f=JPEG?w=500&h=500">
-                </div>
-                <span class="text-sm text-gray-700">友链</span>
-            </a>
+                <!-- 图标5 - 图片 -->
+                <a href="https://blog.nekooy.com/link.html" class="flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-gray-200 flex items-center justify-center mb-2">
+                        <img src="https://img0.baidu.com/it/u=3628310093,4137877932&fm=253&fmt=auto&app=120&f=JPEG?w=500&h=500">
+                    </div>
+                    <span class="text-sm text-gray-700">友链</span>
+                </a>
+                <!-- 图标6 - 图片 -->
+                <a href="https://blog.nekooy.com/link.html" class="flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-gray-200 flex items-center justify-center mb-2">
+                        <img src="https://img0.baidu.com/it/u=3628310093,4137877932&fm=253&fmt=auto&app=120&f=JPEG?w=500&h=500">
+                    </div>
+                    <span class="text-sm text-gray-700">友链</span>
+                </a>
+            </div>
         </div>
         </section>
     </main>
