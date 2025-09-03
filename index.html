@@ -15,13 +15,6 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    // 自定义颜色
-                    colors: {
-                        nekoBlue: '#4285F4', // 蓝色 - 修改此值会改变logo中'N'和'o'的颜色
-                        nekoRed: '#EA4335',  // 红色 - 修改此值会改变logo中'e'和'y'的颜色
-                        nekoYellow: '#FBBC05', // 黄色 - 修改此值会改变logo中'k'的颜色
-                        nekoGreen: '#34A853',  // 绿色 - 修改此值会改变logo中第二个'o'的颜色
-                    },
                     // 自定义字体
                     fontFamily: {
                         sans: ['Arial', 'sans-serif'], // 默认字体 - 修改此值会改变整个页面的默认字体
@@ -68,7 +61,7 @@
 <body class="bg-gray-50 min-h-screen flex flex-col">
     <!-- 顶部导航 -->
     <header class="flex justify-between items-center p-4">
-        <div class="desktop-nav text-gray-600 text-sm">异常请刷新</div>
+        <div class="desktop-nav text-gray-600 text-sm">收藏此网站吧</div>
         <div class="desktop-nav flex items-center">
             <a href="https://blog.nekooy.com/post/guan-yu-zhu-ye.html" class="text-gray-600 hover:text-gray-900 text-sm mr-6">关于</a> <!-- 修改href值可更改链接目标 -->
         </div>
@@ -77,14 +70,8 @@
     <!-- 主要内容 -->
     <main class="flex-grow flex flex-col items-center px-4 pt-8">
         <!-- Nekooy Logo -->
-        <div class="text-[clamp(2.5rem,5vw,4rem)] font-bold mb-8">
-            <!-- 修改颜色值可更改对应的字母颜色 -->
-            <span class="text-nekoBlue">N</span>
-            <span class="text-nekoRed">e</span>
-            <span class="text-nekoYellow">k</span>
-            <span class="text-nekoBlue">o</span>
-            <span class="text-nekoGreen">o</span>
-            <span class="text-nekoRed">y</span>
+        <div class="mb-8 flex justify-center">
+            <img src="logo.gif" alt="Nekooy Logo" class="max-w-full h-auto rounded-2xl" style="max-height: 150px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);">
         </div>
 
         <!-- 搜索框和按钮 -->
