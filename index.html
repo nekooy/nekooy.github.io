@@ -68,6 +68,11 @@
                 transform: translateY(0);
             }
         }
+        
+        /* 预设标题高度防止布局跳动 */
+        #animated-text {
+            height: 100px;
+        }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen flex flex-col">
@@ -200,22 +205,19 @@
             const text = 'Nekooy';
             let index = 0;
             
-            // 延迟0.1秒后开始动画
-            setTimeout(() => {
-                function addLetter() {
-                    if (index < text.length) {
-                        const span = document.createElement('span');
-                        span.textContent = text[index];
-                        span.className = 'typing-animation';
-                        span.style.animationDelay = `${index * 0.1}s`;
-                        textElement.appendChild(span);
-                        index++;
-                        setTimeout(addLetter, 100);
-                    }
+            function addLetter() {
+                if (index < text.length) {
+                    const span = document.createElement('span');
+                    span.textContent = text[index];
+                    span.className = 'typing-animation';
+                    span.style.animationDelay = `${index * 0.1}s`;
+                    textElement.appendChild(span);
+                    index++;
+                    setTimeout(addLetter, 100);
                 }
+            }
                 
-                addLetter();
-            }, 100);
+            addLetter();
         });
 
         // 处理搜索表单提交
