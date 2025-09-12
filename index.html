@@ -6,9 +6,9 @@
     <meta name="renderer" content="webkit"/>          <!-- 强制使用 WebKit 内核 -->
     <meta name="force-rendering" content="webkit"/>   <!-- 同上，增强兼容性 -->
     <meta property="og:site_name" content="Nekooy" />
-    <meta name="keywords" content="贰拾喵，Nekooy，个人空间，多引擎搜索，二次元，">
-    <title>Nekooy小站 - 多样搜索和个人空间</title>
-    <link rel="icon" href="favicion.ico" type="image/jpeg">
+    <meta name="keywords" content="贰拾喵，Nekooy，分享空间，多引擎搜索，二次元，">
+    <title>Nekooy小站 - 多样搜索和分享空间</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <!-- 引入Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- 引入Font Awesome图标库 -->
@@ -49,6 +49,26 @@
             }
         }
     </style>
+    
+    <!-- 添加打字动画CSS -->
+    <style>
+        .typing-animation {
+            display: inline-block;
+            opacity: 0;
+            animation: fadeInUp 0.5s forwards;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body class="bg-gray-50 min-h-screen flex flex-col">
     <!-- 顶部导航 -->
@@ -68,7 +88,7 @@
         
         <!-- Nekooy文字 -->
         <div class="mb-0">
-            <h1 style="font-family: 'Covered By Your Grace', cursive; font-weight: bold; color: black; font-size: 4rem; transform: scaleX(1.75);">Nekooy</h1>
+            <h1 id="animated-text" style="font-family: 'Covered By Your Grace', cursive; font-weight: bold; color: black; font-size: 4rem; transform: scaleX(1.75);"></h1>
         </div>
 
         <!-- 搜索框和按钮 -->
@@ -116,7 +136,7 @@
                     <!-- 图标1 -->
                     <a href="https://blog.nekooy.com/about.html" class="flex flex-col items-center" aria-label="关于自己">
                         <div class="w-12 h-12 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-black flex items-center justify-center mb-2 transition-transform duration-200 hover:scale-110">
-                            <img src="favicion.ico" alt="个人头像">
+                            <img src="favicon.ico" alt="个人头像">
                         </div>
                         <span class="text-sm text-gray-700">自己</span>
                     </a>
@@ -174,6 +194,30 @@
     </footer>
 
     <script>
+        // 添加打字动画效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const textElement = document.getElementById('animated-text');
+            const text = 'Nekooy';
+            let index = 0;
+            
+            // 延迟0.1秒后开始动画
+            setTimeout(() => {
+                function addLetter() {
+                    if (index < text.length) {
+                        const span = document.createElement('span');
+                        span.textContent = text[index];
+                        span.className = 'typing-animation';
+                        span.style.animationDelay = `${index * 0.1}s`;
+                        textElement.appendChild(span);
+                        index++;
+                        setTimeout(addLetter, 100);
+                    }
+                }
+                
+                addLetter();
+            }, 100);
+        });
+
         // 处理搜索表单提交
         document.getElementById('searchForm').addEventListener('submit', function(e) {
             e.preventDefault();
