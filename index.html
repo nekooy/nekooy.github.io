@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta data-rh="true" property="og:site_name" content="Nekooy" />
+    <meta name="renderer" content="webkit"/>          <!-- 强制使用 WebKit 内核 -->
+    <meta name="force-rendering" content="webkit"/>   <!-- 同上，增强兼容性 -->
+    <meta property="og:site_name" content="Nekooy" />
     <meta name="keywords" content="贰拾喵，Nekooy，个人空间，多引擎搜索，二次元，">
     <title>Nekooy小站 - 多样搜索和个人空间</title>
-    <link rel="icon" href="https://p3-pc.douyinpic.com/img/aweme-avatar/tos-cn-i-0813_o0Eg7PAPIvjID3mCjQaiiiop25BZzvAkAAyA8~c5_300x300.jpeg?from=2956013662" type="image/jpeg">
+    <link rel="icon" href="favicion.ico" type="image/jpeg">
     <!-- 引入Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- 引入Font Awesome图标库 -->
@@ -78,9 +80,10 @@
 
         <!-- 搜索框和按钮 -->
         <div class="w-full flex justify-center mb-8">
-            <form id="searchForm" class="search-container">
+            <form id="searchForm" class="search-container" role="search">
                 <!-- 搜索引擎选择下拉菜单 -->
-                <select id="searchEngine" class="select-dropdown">
+                <label for="searchEngine" class="sr-only">选择搜索引擎</label>
+                <select id="searchEngine" class="select-dropdown" aria-label="搜索引擎选择">
                     <!-- 修改value属性可更改对应搜索引擎的URL -->
                     <option value="https://www.bing.com/search?q=" selected>必应</option>
                     <option value="https://www.google.com/search?q=">谷歌</option>
@@ -98,15 +101,17 @@
                     class="search-input" 
                     placeholder="输入搜索内容..." 
                     autocomplete="off"
+                    aria-label="搜索关键词"
                 >
 
                 <!-- 搜索按钮 -->
-                <button type="submit" class="search-btn hidden sm:flex">
+                <button type="submit" class="search-btn" aria-label="搜索">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="11" cy="11" r="8"></circle>
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
                 </button>
+              
             </form>
         </div>
 
@@ -116,25 +121,25 @@
                 <!-- 第一行图标 -->
                 <div class="flex justify-center space-x-16">
                     <!-- 图标1 -->
-                    <a href="https://blog.nekooy.com/about.html" class="flex flex-col items-center">
-                        <div class="w-12 h-12 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-black flex items-center justify-center mb-2">
-                            <img src="https://p3-pc.douyinpic.com/img/aweme-avatar/tos-cn-i-0813_o0Eg7PAPIvjID3mCjQaiiiop25BZzvAkAAyA8~c5_300x300.jpeg?from=2956013662">
+                    <a href="https://blog.nekooy.com/about.html" class="flex flex-col items-center" aria-label="关于自己">
+                        <div class="w-12 h-12 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-black flex items-center justify-center mb-2 transition-transform duration-200 hover:scale-110">
+                            <img src="favicion.ico" alt="个人头像">
                         </div>
                         <span class="text-sm text-gray-700">自己</span>
                     </a>
 
                     <!-- 图标2 -->
-                    <a href="https://blog.nekooy.com" class="flex flex-col items-center">
-                        <div class="w-12 h-12 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-black flex items-center justify-center mb-2">
-                            <img src="https://img2.baidu.com/it/u=456909057,3947566805&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500">
+                    <a href="https://blog.nekooy.com" class="flex flex-col items-center" aria-label="博客">
+                        <div class="w-12 h-12 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-black flex items-center justify-center mb-2 transition-transform duration-200 hover:scale-110">
+                            <img src="webp/nav2.webp" alt="博客图标">
                         </div>
                         <span class="text-sm text-gray-700">博客</span>
                     </a>
 
                     <!-- 图标3 -->
-                    <a href="https://blog.nekooy.com/link.html" class="flex flex-col items-center">
-                        <div class="w-12 h-12 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-black flex items-center justify-center mb-2">
-                            <img src="https://img0.baidu.com/it/u=3628310093,4137877932&fm=253&fmt=auto&app=120&f=JPEG?w=500&h=500">
+                    <a href="https://blog.nekooy.com/link.html" class="flex flex-col items-center" aria-label="友情链接">
+                        <div class="w-12 h-12 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-black flex items-center justify-center mb-2 transition-transform duration-200 hover:scale-110">
+                            <img src="webp/nav3.webp" alt="友链图标">
                         </div>
                         <span class="text-sm text-gray-700">友链</span>
                     </a>
@@ -143,25 +148,25 @@
                 <!-- 第二行图标 -->
                 <div class="flex justify-center space-x-16">
                     <!-- 图标4 -->
-                    <a href="https://github.com/nekooy" class="flex flex-col items-center">
-                        <div class="w-12 h-12 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-black flex items-center justify-center mb-2">
-                            <img src="https://img0.baidu.com/it/u=1214586059,3252340186&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500">
+                    <a href="https://github.com/nekooy" class="flex flex-col items-center" aria-label="GitHub">
+                        <div class="w-12 h-12 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-black flex items-center justify-center mb-2 transition-transform duration-200 hover:scale-110">
+                            <img src="webp/nav4.webp" alt="GitHub图标">
                         </div>
                         <span class="text-sm text-gray-700">GitHub</span>
                     </a>
 
                     <!-- 图标5 -->
-                    <a href="https://space.bilibili.com/1519363375" class="flex flex-col items-center">
-                        <div class="w-12 h-12 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-black flex items-center justify-center mb-2">
-                            <img src="https://www.bilibili.com/favicon.ico">
+                    <a href="https://space.bilibili.com/1519363375" class="flex flex-col items-center" aria-label="哔哩哔哩">
+                        <div class="w-12 h-12 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-black flex items-center justify-center mb-2 transition-transform duration-200 hover:scale-110">
+                            <img src="webp/nav5.webp" alt="哔哩哔哩图标">
                         </div>
                         <span class="text-sm text-gray-700">bilibili</span>
                     </a>
 
                     <!-- 图标6 -->
-                    <a href="https://www.bilibili.com/video/BV1GJ411x7h7" class="flex flex-col items-center">
-                        <div class="w-12 h-12 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-black flex items-center justify-center mb-2">
-                            <img src="https://img2.baidu.com/it/u=3185466532,1264488194&fm=253&fmt=auto&app=138&f=JPEG?w=801&h=800">
+                    <a href="https://www.bilibili.com/video/BV1GJ411x7h7" class="flex flex-col items-center" aria-label="彩蛋">
+                        <div class="w-12 h-12 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-black flex items-center justify-center mb-2 transition-transform duration-200 hover:scale-110">
+                            <img src="webp/nav6.webp" alt="彩蛋图标">
                         </div>
                         <span class="text-sm text-gray-700">别点~</span>
                     </a>
