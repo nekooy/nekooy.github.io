@@ -25,7 +25,7 @@
             .search-container {
                 @apply border-4 border-black rounded-full overflow-hidden flex w-full max-w-2xl transition-all duration-200 ease-in-out;
                 height: 60px;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0); /* 阴影效果 - 修改rgba中的最后一个值(0-1)可调整阴影浓度 */
+                box-shadow:  0 0 5px  rgba(0, 0, 0, 0); /* 阴影效果 - 修改rgba中的最后一个值(0-1)可调整阴影浓度 */
             }
 
             /* 搜索按钮样式 */
@@ -49,6 +49,40 @@
                 min-width: 80px; /* 最小宽度 */
                 width: auto; /* 自适应宽度 */
                 text-align: center;
+            }
+            
+            /* 新增组件样式类 */
+            .logo-container {
+                @apply mb-0 flex justify-center;
+            }
+            
+            .logo-image {
+                @apply max-w-full h-auto rounded-2xl;
+            }
+            
+            .title-container {
+                @apply mb-0;
+            }
+            
+            .nav-link {
+                @apply text-gray-600 hover:text-gray-900 text-sm;
+            }
+            
+            .footer-text {
+                @apply p-4 text-center text-gray-500 text-sm;
+            }
+            
+            .quick-nav-icon {
+                @apply w-12 h-12 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-black flex items-center justify-center mb-2 transition-transform duration-200 hover:scale-110;
+            }
+            
+            .quick-nav-text {
+                @apply text-sm text-gray-700;
+            }
+            
+            /* 提取的body样式 */
+            .page-body {
+                @apply bg-gray-50 min-h-screen flex flex-col;
             }
         }
     </style>
@@ -81,10 +115,12 @@
         /* 使用自定义字体仅应用于Nekooy文字 */
         .nekooy-font {
             font-family: 'Covered By Your Grace', cursive;
+            font-weight: bold;
+            color: black;
+            font-size: 4rem;
+            transform: scaleX(1.75);
         }
-    </style>
 
-    <style>
         /* 字体文件 */
         /* latin-ext */
         @font-face {
@@ -108,27 +144,26 @@
     </style>
 </head>
 
-<body class="bg-gray-50 min-h-screen flex flex-col">
+<body class="page-body">
     <!-- 顶部导航 -->
     <header class="flex justify-between items-center p-4">
         <div class="desktop-nav text-gray-600 text-sm">收藏此网站吧</div>
         <div class="desktop-nav flex items-center">
-            <a href="https://blog.nekooy.com/post/guan-yu-zhu-ye.html"
-                class="text-gray-600 hover:text-gray-900 text-sm mr-6">关于</a> <!-- 修改href值可更改链接目标 -->
+            <a href="https://blog.nekooy.com/post/guan-yu-zhu-ye.html" class="nav-link mr-6">关于</a>
+            <!-- 修改href值可更改链接目标 -->
         </div>
     </header>
 
     <!-- 主要内容 -->
     <main class="flex-grow flex flex-col items-center px-4 pt-8">
         <!-- Nekooy Logo -->
-        <div class="mb-0 flex justify-center">
-            <img src="logo.webp" alt="Nekooy Logo" class="max-w-full h-auto rounded-2xl" style="max-height: 150px;">
+        <div class="logo-container">
+            <img src="logo.webp" alt="Nekooy Logo" class="logo-image" style="max-height: 150px;">
         </div>
 
         <!-- Nekooy文字 -->
-        <div class="mb-0">
-            <h1 id="animated-text" class="nekooy-font"
-                style="font-weight: bold; color: black; font-size: 4rem; transform: scaleX(1.75);">
+        <div class="title-container">
+            <h1 id="animated-text" class="nekooy-font">
             </h1>
         </div>
 
@@ -178,29 +213,26 @@
                 <div class="flex justify-center space-x-16">
                     <!-- 图标1 -->
                     <a href="https://blog.nekooy.com/about.html" class="flex flex-col items-center" aria-label="关于自己">
-                        <div
-                            class="w-12 h-12 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-black flex items-center justify-center mb-2 transition-transform duration-200 hover:scale-110">
+                        <div class="quick-nav-icon">
                             <img src="favicon.ico" alt="个人头像">
                         </div>
-                        <span class="text-sm text-gray-700">自己</span>
+                        <span class="quick-nav-text">自己</span>
                     </a>
 
                     <!-- 图标2 -->
                     <a href="https://blog.nekooy.com" class="flex flex-col items-center" aria-label="博客">
-                        <div
-                            class="w-12 h-12 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-black flex items-center justify-center mb-2 transition-transform duration-200 hover:scale-110">
+                        <div class="quick-nav-icon">
                             <img src="picture/nav2.webp" alt="博客图标">
                         </div>
-                        <span class="text-sm text-gray-700">博客</span>
+                        <span class="quick-nav-text">博客</span>
                     </a>
 
                     <!-- 图标3 -->
                     <a href="https://blog.nekooy.com/link.html" class="flex flex-col items-center" aria-label="友情链接">
-                        <div
-                            class="w-12 h-12 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-black flex items-center justify-center mb-2 transition-transform duration-200 hover:scale-110">
+                        <div class="quick-nav-icon">
                             <img src="picture/nav3.webp" alt="友链图标">
                         </div>
-                        <span class="text-sm text-gray-700">友链</span>
+                        <span class="quick-nav-text">友链</span>
                     </a>
                 </div>
 
@@ -208,31 +240,28 @@
                 <div class="flex justify-center space-x-16">
                     <!-- 图标4 -->
                     <a href="https://github.com/nekooy" class="flex flex-col items-center" aria-label="GitHub">
-                        <div
-                            class="w-12 h-12 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-black flex items-center justify-center mb-2 transition-transform duration-200 hover:scale-110">
+                        <div class="quick-nav-icon">
                             <img src="picture/nav4.svg" alt="GitHub图标">
                         </div>
-                        <span class="text-sm text-gray-700">GitHub</span>
+                        <span class="quick-nav-text">GitHub</span>
                     </a>
 
                     <!-- 图标5 -->
                     <a href="https://space.bilibili.com/1519363375" class="flex flex-col items-center"
                         aria-label="哔哩哔哩">
-                        <div
-                            class="w-12 h-12 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-black flex items-center justify-center mb-2 transition-transform duration-200 hover:scale-110">
+                        <div class="quick-nav-icon">
                             <img src="picture/nav5.webp" alt="哔哩哔哩图标">
                         </div>
-                        <span class="text-sm text-gray-700">bilibili</span>
+                        <span class="quick-nav-text">bilibili</span>
                     </a>
 
                     <!-- 图标6 -->
                     <a href="https://www.bilibili.com/video/BV1GJ411x7h7" class="flex flex-col items-center"
                         aria-label="彩蛋">
-                        <div
-                            class="w-12 h-12 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-black flex items-center justify-center mb-2 transition-transform duration-200 hover:scale-110">
+                        <div class="quick-nav-icon">
                             <img src="picture/nav6.webp" alt="彩蛋图标">
                         </div>
-                        <span class="text-sm text-gray-700">别点~</span>
+                        <span class="quick-nav-text">别点~</span>
                     </a>
                 </div>
             </div>
@@ -240,7 +269,7 @@
     </main>
 
     <!-- 页脚 -->
-    <footer class="p-4 text-center text-gray-500 text-sm mt-auto">
+    <footer class="footer-text mt-auto">
         <p>© 2025 Nekooy也叫贰拾喵哦</p> <!-- 修改年份和名称可更新版权信息 -->
     </footer>
 
