@@ -29,24 +29,30 @@
 
             /* 搜索按钮样式 */
             .search-btn {
-                @apply bg-gray-50 hover:bg-gray-100 text-gray-700 font-medium py-2.5 transition duration-150 ease-in-out focus:outline-none border-black flex items-center justify-center hidden sm:flex;
+                @apply bg-gray-50 hover:bg-gray-100 text-gray-700 font-medium py-2.5 transition duration-150 ease-in-out focus:outline-none border-black flex items-center justify-center;
                 width: 100px; /* 固定宽度 - 修改此值会改变按钮宽度 */
             }
-
-            /* 搜索输入框样式 */
-            .search-input {
-                @apply flex-grow px-4 py-2.5 bg-transparent focus:outline-none text-base;
-                /* flex-grow: 1; 输入框会占据剩余空间 */
+            
+            /* 清除按钮样式 */
+            .clear-btn {
+                @apply flex items-center justify-center px-3 text-gray-500 hover:text-gray-700;
             }
-
+            
+            /* 移动端搜索按钮样式 */
+            .search-btn-mobile {
+                @apply bg-gray-50 hover:bg-gray-100 text-gray-700 font-medium py-2.5 transition duration-150 ease-in-out focus:outline-none border-black flex items-center justify-center sm:hidden;
+                width: 45px; /* 移动端按钮宽度 */
+            }
+            
             /* 搜索引擎选择下拉菜单样式 */
             .select-dropdown {
                 @apply bg-gray-50 hover:bg-gray-100 text-gray-700 font-medium py-2.5 transition duration-150 ease-in-out focus:outline-none border-black appearance-none;
                 background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='23' height='23' viewBox='0 0 24 24' fill='none' stroke='%235f6368' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
                 background-repeat: no-repeat;
-                background-position: center right 0.5rem; /* 箭头位置 - 修改right值可调整箭头位置 */
+                background-position: center right 0.5rem;
                 padding: 0 2.5rem 0 1rem;
-                width: 100px; /* 固定宽度 - 修改此值会改变下拉菜单宽度 */
+                min-width: 80px; /* 最小宽度 */
+                width: auto; /* 自适应宽度 */
                 text-align: center;
             }
         }
@@ -76,6 +82,11 @@
         #animated-text {
             height: 100px;
         }
+
+        /* 使用自定义字体仅应用于Nekooy文字 */
+        .nekooy-font {
+            font-family: 'Covered By Your Grace', cursive;
+        }
     </style>
 
     <style>
@@ -99,12 +110,6 @@
             src: url(fonts/QGYwz-AZahWOJJI9kykWW9mD6opopoqXSOSEEQgs.woff2) format('woff2');
             unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
         }
-
-        /* 使用自定义字体 */
-        body {
-            font-family: 'Covered By Your Grace', cursive;
-            font-size: 24px;
-        }
     </style>
 </head>
 
@@ -127,8 +132,8 @@
 
         <!-- Nekooy文字 -->
         <div class="mb-0">
-            <h1 id="animated-text"
-                style="font-family: 'Covered By Your Grace', cursive; font-weight: bold; color: black; font-size: 4rem; transform: scaleX(1.75);">
+            <h1 id="animated-text" class="nekooy-font"
+                style="font-weight: bold; color: black; font-size: 4rem; transform: scaleX(1.75);">
             </h1>
         </div>
 
@@ -151,11 +156,16 @@
                 </select>
 
                 <!-- 搜索输入框 -->
-                <input type="text" id="searchQuery" class="search-input" placeholder="输入搜索内容..." autocomplete="off"
-                    aria-label="搜索关键词">
+                <input type="text" id="searchQuery" class="search-input flex-grow px-4 bg-gray-50 focus:outline-none"
+                    placeholder="输入搜索内容..." autocomplete="off" aria-label="搜索关键词" style="caret-color: orange;">
 
-                <!-- 搜索按钮 -->
-                <button type="submit" class="search-btn" aria-label="搜索">
+                <!-- 清除搜索内容按钮 -->
+                <button type="button" id="clearSearch" class="clear-btn" aria-label="清除搜索内容">
+                    <i class="fa fa-times"></i>
+                </button>
+
+                <!-- 桌面端搜索按钮 -->
+                <button type="submit" class="search-btn hidden sm:flex" aria-label="搜索">
                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="11" cy="11" r="8"></circle>
@@ -163,6 +173,14 @@
                     </svg>
                 </button>
 
+                <!-- 移动端搜索按钮（始终可见） -->
+                <button type="submit" class="search-btn-mobile sm:hidden" aria-label="搜索">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
             </form>
         </div>
 
@@ -287,6 +305,32 @@
             if (e.key === 'Enter') {
                 document.getElementById('searchForm').dispatchEvent(new Event('submit'));
             }
+        });
+
+        // 添加: 清除搜索内容功能
+        document.getElementById('clearSearch').addEventListener('click', function () {
+            document.getElementById('searchQuery').value = '';
+            updateClearButtonVisibility();
+            document.getElementById('searchQuery').focus();
+        });
+
+        // 添加: 监听输入框变化，显示/隐藏清除按钮
+        document.getElementById('searchQuery').addEventListener('input', updateClearButtonVisibility);
+
+        // 新增: 更新清除按钮可见性的函数
+        function updateClearButtonVisibility() {
+            const searchQuery = document.getElementById('searchQuery');
+            const clearBtn = document.getElementById('clearSearch');
+            if (searchQuery.value.trim() !== '') {
+                clearBtn.style.display = 'flex';
+            } else {
+                clearBtn.style.display = 'none';
+            }
+        }
+
+        // 确保页面加载时正确设置清除按钮的初始状态
+        document.addEventListener('DOMContentLoaded', function () {
+            updateClearButtonVisibility();
         });
     </script>
 </body>
