@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="renderer" content="webkit">          <!-- 强制使用 WebKit 内核 -->
-    <meta name="force-rendering" content="webkit">   <!-- 同上，增强兼容性 -->
-    <meta property="og:site_name" content="Nekooy" >
+    <meta name="renderer" content="webkit"> <!-- 强制使用 WebKit 内核 -->
+    <meta name="force-rendering" content="webkit"> <!-- 同上，增强兼容性 -->
+    <meta property="og:site_name" content="Nekooy">
     <meta name="keywords" content="贰拾喵，Nekooy，分享空间，多引擎搜索，二次元，">
     <title>Nekooy小站 - 多样搜索和分享空间</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" >
-    <link rel="apple-touch-icon" href="favicon.ico" >
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="favicon.ico">
     <!-- 引入Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- 引入Font Awesome图标库 -->
@@ -51,7 +52,7 @@
             }
         }
     </style>
-    
+
     <!-- 添加打字动画CSS -->
     <style>
         .typing-animation {
@@ -59,30 +60,62 @@
             opacity: 0;
             animation: fadeInUp 0.5s forwards;
         }
-        
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-        
+
         /* 预设标题高度防止布局跳动 */
         #animated-text {
             height: 100px;
         }
     </style>
+
+    <style>
+        /* 字体文件 */
+        /* latin-ext */
+        @font-face {
+            font-family: 'Covered By Your Grace';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url(fonts/QGYwz-AZahWOJJI9kykWW9mD6opopoqXSOSEHwgsm6Y.woff2) format('woff2');
+            unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+        }
+
+        /* latin */
+        @font-face {
+            font-family: 'Covered By Your Grace';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url(fonts/QGYwz-AZahWOJJI9kykWW9mD6opopoqXSOSEEQgs.woff2) format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+
+        /* 使用自定义字体 */
+        body {
+            font-family: 'Covered By Your Grace', cursive;
+            font-size: 24px;
+        }
+    </style>
 </head>
+
 <body class="bg-gray-50 min-h-screen flex flex-col">
     <!-- 顶部导航 -->
     <header class="flex justify-between items-center p-4">
         <div class="desktop-nav text-gray-600 text-sm">收藏此网站吧</div>
         <div class="desktop-nav flex items-center">
-            <a href="https://blog.nekooy.com/post/guan-yu-zhu-ye.html" class="text-gray-600 hover:text-gray-900 text-sm mr-6">关于</a> <!-- 修改href值可更改链接目标 -->
+            <a href="https://blog.nekooy.com/post/guan-yu-zhu-ye.html"
+                class="text-gray-600 hover:text-gray-900 text-sm mr-6">关于</a> <!-- 修改href值可更改链接目标 -->
         </div>
     </header>
 
@@ -92,10 +125,12 @@
         <div class="mb-0 flex justify-center">
             <img src="logo.webp" alt="Nekooy Logo" class="max-w-full h-auto rounded-2xl" style="max-height: 150px;">
         </div>
-        
+
         <!-- Nekooy文字 -->
         <div class="mb-0">
-            <h1 id="animated-text" style="font-family: 'Covered By Your Grace', cursive; font-weight: bold; color: black; font-size: 4rem; transform: scaleX(1.75);"></h1>
+            <h1 id="animated-text"
+                style="font-family: 'Covered By Your Grace', cursive; font-weight: bold; color: black; font-size: 4rem; transform: scaleX(1.75);">
+            </h1>
         </div>
 
         <!-- 搜索框和按钮 -->
@@ -109,29 +144,26 @@
                     <option value="https://www.google.com/search?q=">谷歌</option>
                     <option value="https://www.baidu.com/s?word=">百度</option>
                     <option value="https://bgm.tv/subject_search/">动漫信息</option>
-                    <option value="https://weixin.sogou.com/weixinwap?ie=utf8&type=2&pg=webSearchList&_sug_=y&_sug_type_=&query=">微信</option>
+                    <option
+                        value="https://weixin.sogou.com/weixinwap?ie=utf8&type=2&pg=webSearchList&_sug_=y&_sug_type_=&query=">
+                        微信</option>
                     <option value="https://www.zhihu.com/search?q=">知乎</option>
                     <option value="https://www.google.com/search?q=site:bgm.tv">bgm.tv</option>
                 </select>
 
                 <!-- 搜索输入框 -->
-                <input 
-                    type="text" 
-                    id="searchQuery" 
-                    class="search-input" 
-                    placeholder="输入搜索内容..." 
-                    autocomplete="off"
-                    aria-label="搜索关键词"
-                >
+                <input type="text" id="searchQuery" class="search-input" placeholder="输入搜索内容..." autocomplete="off"
+                    aria-label="搜索关键词">
 
                 <!-- 搜索按钮 -->
                 <button type="submit" class="search-btn" aria-label="搜索">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="11" cy="11" r="8"></circle>
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
                 </button>
-              
+
             </form>
         </div>
 
@@ -142,7 +174,8 @@
                 <div class="flex justify-center space-x-16">
                     <!-- 图标1 -->
                     <a href="https://blog.nekooy.com/about.html" class="flex flex-col items-center" aria-label="关于自己">
-                        <div class="w-12 h-12 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-black flex items-center justify-center mb-2 transition-transform duration-200 hover:scale-110">
+                        <div
+                            class="w-12 h-12 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-black flex items-center justify-center mb-2 transition-transform duration-200 hover:scale-110">
                             <img src="favicon.ico" alt="个人头像">
                         </div>
                         <span class="text-sm text-gray-700">自己</span>
@@ -150,7 +183,8 @@
 
                     <!-- 图标2 -->
                     <a href="https://blog.nekooy.com" class="flex flex-col items-center" aria-label="博客">
-                        <div class="w-12 h-12 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-black flex items-center justify-center mb-2 transition-transform duration-200 hover:scale-110">
+                        <div
+                            class="w-12 h-12 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-black flex items-center justify-center mb-2 transition-transform duration-200 hover:scale-110">
                             <img src="picture/nav2.webp" alt="博客图标">
                         </div>
                         <span class="text-sm text-gray-700">博客</span>
@@ -158,7 +192,8 @@
 
                     <!-- 图标3 -->
                     <a href="https://blog.nekooy.com/link.html" class="flex flex-col items-center" aria-label="友情链接">
-                        <div class="w-12 h-12 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-black flex items-center justify-center mb-2 transition-transform duration-200 hover:scale-110">
+                        <div
+                            class="w-12 h-12 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-black flex items-center justify-center mb-2 transition-transform duration-200 hover:scale-110">
                             <img src="picture/nav3.webp" alt="友链图标">
                         </div>
                         <span class="text-sm text-gray-700">友链</span>
@@ -169,23 +204,28 @@
                 <div class="flex justify-center space-x-16">
                     <!-- 图标4 -->
                     <a href="https://github.com/nekooy" class="flex flex-col items-center" aria-label="GitHub">
-                        <div class="w-12 h-12 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-black flex items-center justify-center mb-2 transition-transform duration-200 hover:scale-110">
+                        <div
+                            class="w-12 h-12 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-black flex items-center justify-center mb-2 transition-transform duration-200 hover:scale-110">
                             <img src="picture/nav4.svg" alt="GitHub图标">
                         </div>
                         <span class="text-sm text-gray-700">GitHub</span>
                     </a>
 
                     <!-- 图标5 -->
-                    <a href="https://space.bilibili.com/1519363375" class="flex flex-col items-center" aria-label="哔哩哔哩">
-                        <div class="w-12 h-12 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-black flex items-center justify-center mb-2 transition-transform duration-200 hover:scale-110">
+                    <a href="https://space.bilibili.com/1519363375" class="flex flex-col items-center"
+                        aria-label="哔哩哔哩">
+                        <div
+                            class="w-12 h-12 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-black flex items-center justify-center mb-2 transition-transform duration-200 hover:scale-110">
                             <img src="picture/nav5.webp" alt="哔哩哔哩图标">
                         </div>
                         <span class="text-sm text-gray-700">bilibili</span>
                     </a>
 
                     <!-- 图标6 -->
-                    <a href="https://www.bilibili.com/video/BV1GJ411x7h7" class="flex flex-col items-center" aria-label="彩蛋">
-                        <div class="w-12 h-12 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-black flex items-center justify-center mb-2 transition-transform duration-200 hover:scale-110">
+                    <a href="https://www.bilibili.com/video/BV1GJ411x7h7" class="flex flex-col items-center"
+                        aria-label="彩蛋">
+                        <div
+                            class="w-12 h-12 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-black flex items-center justify-center mb-2 transition-transform duration-200 hover:scale-110">
                             <img src="picture/nav6.webp" alt="彩蛋图标">
                         </div>
                         <span class="text-sm text-gray-700">别点~</span>
@@ -202,11 +242,11 @@
 
     <script>
         // 添加打字动画效果
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const textElement = document.getElementById('animated-text');
             const text = 'Nekooy';
             let index = 0;
-            
+
             function addLetter() {
                 if (index < text.length) {
                     const span = document.createElement('span');
@@ -218,37 +258,38 @@
                     setTimeout(addLetter, 100);
                 }
             }
-                
+
             addLetter();
         });
 
         // 处理搜索表单提交
-        document.getElementById('searchForm').addEventListener('submit', function(e) {
+        document.getElementById('searchForm').addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             const engine = document.getElementById('searchEngine').value;
             const query = document.getElementById('searchQuery').value.trim();
-            
+
             if (query) {
                 let url = engine;
-                
+
                 // 特殊处理"bgm.tv"搜索引擎
                 if (engine === "https://www.google.com/search?q=site:bgm.tv") {
                     url += "+" + encodeURIComponent(query);
                 } else {
                     url += encodeURIComponent(query);
                 }
-                
+
                 window.location.href = url; // 跳转至搜索结果页面
             }
         });
 
         // 添加键盘事件支持 - 按下Enter键提交搜索
-        document.getElementById('searchQuery').addEventListener('keypress', function(e) {
+        document.getElementById('searchQuery').addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
                 document.getElementById('searchForm').dispatchEvent(new Event('submit'));
             }
         });
     </script>
 </body>
+
 </html>
