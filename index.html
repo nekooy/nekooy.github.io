@@ -25,7 +25,7 @@
             }
 
             .search-btn {
-                @apply bg-gray-50 hover:bg-gray-100 text-gray-700 font-medium py-2.5 transition duration-150 ease-in-out focus:outline-none border-black items-center justify-center;
+                @apply hover:bg-gray-100 text-gray-700 font-medium py-2.5 transition duration-150 ease-in-out focus:outline-none border-black items-center justify-center;
                 width: 100px;
             }
             
@@ -34,7 +34,7 @@
             }
             
             .select-dropdown {
-                @apply bg-gray-50 hover:bg-gray-100 text-gray-700 font-medium py-2.5 transition duration-150 ease-in-out focus:outline-none border-black appearance-none;
+                @apply hover:bg-gray-100 text-gray-700 font-medium py-2.5 transition duration-150 ease-in-out focus:outline-none border-black appearance-none;
                 background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='23' height='23' viewBox='0 0 24 24' fill='none' stroke='%235f6368' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
                 background-repeat: no-repeat;
                 background-position: center right 0.5rem;
@@ -65,7 +65,7 @@
             }
             
             .quick-nav-icon {
-                @apply w-12 h-12 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-black flex items-center justify-center mb-2 transition-transform duration-200 hover:scale-110;
+                @apply h-12 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-black flex items-center justify-center mb-2 transition-transform duration-200 hover:scale-110;
             }
             
             .quick-nav-text {
@@ -73,7 +73,7 @@
             }
             
             .page-body {
-                @apply bg-gray-50 min-h-screen flex flex-col;
+                @apply min-h-screen flex flex-col;
             }
         }
     </style>
@@ -166,7 +166,7 @@
                 </select>
 
                 <!-- 搜索输入框 -->
-                <input type="text" id="searchQuery" class="search-input flex-grow px-4 bg-gray-50 focus:outline-none"
+                <input type="text" id="searchQuery" class="search-input flex-grow px-4 focus:outline-none"
                     placeholder="回车以搜索..." autocomplete="off" aria-label="搜索关键词" style="caret-color: orange;">
 
                 <!-- 清除搜索内容按钮 -->
