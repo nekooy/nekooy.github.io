@@ -44,6 +44,7 @@
             .select-dropdown {
                 /* 应用悬停效果、文字颜色、字体粗细等样式 */
                 @apply text-black font-medium py-2.5 transition duration-150 ease-in-out focus:outline-none border-black appearance-none;
+                background-color: #ffffff;
                 background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='23' height='23' viewBox='0 0 24 24' fill='none' stroke='%23000000' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");  /* 自定义下拉箭头图标 - 黑色 */
                 background-repeat: no-repeat;         /* 背景图片不重复 */
                 background-position: center right 0.5rem; /* 背景图片位置在右侧中心 */
@@ -218,7 +219,7 @@
             
             .select-dropdown {
                 border-color: #555555;
-                background-color: #555555;
+                background-color: #555555 !important;
             }
             
             .search-input {
