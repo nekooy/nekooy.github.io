@@ -30,21 +30,21 @@
             /* 搜索按钮样式 - 提交搜索的按钮 */
             .search-btn {
                 /* 应用悬停效果、文字颜色、字体粗细、内边距等样式 */
-                @apply hover:bg-gray-100 text-gray-700 font-medium py-2.5 transition duration-150 ease-in-out focus:outline-none border-black items-center justify-center;
+                @apply hover:bg-gray-100 text-black font-medium py-2.5 transition duration-150 ease-in-out focus:outline-none border-black items-center justify-center;
                 width: 100px;               /* 设置按钮宽度为100像素 */
             }
             
             /* 清除按钮样式 - 清空搜索框内容的按钮 */
             .clear-btn {
                 /* 应用弹性布局、居中对齐、内边距和颜色变化效果 */
-                @apply flex items-center justify-center px-3 text-gray-500 hover:text-gray-700;
+                @apply flex items-center justify-center px-3 text-black hover:text-black;
             }
             
             /* 下拉选择框样式 - 选择搜索引擎的下拉菜单 */
             .select-dropdown {
                 /* 应用悬停效果、文字颜色、字体粗细等样式 */
-                @apply hover:bg-gray-100 text-gray-700 font-medium py-2.5 transition duration-150 ease-in-out focus:outline-none border-black appearance-none;
-                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='23' height='23' viewBox='0 0 24 24' fill='none' stroke='%235f6368' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");  /* 自定义下拉箭头图标 */
+                @apply hover:bg-gray-100 text-black font-medium py-2.5 transition duration-150 ease-in-out focus:outline-none border-black appearance-none;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='23' height='23' viewBox='0 0 24 24' fill='none' stroke='%23000000' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");  /* 自定义下拉箭头图标 - 黑色 */
                 background-repeat: no-repeat;         /* 背景图片不重复 */
                 background-position: center right 0.5rem; /* 背景图片位置在右侧中心 */
                 padding: 0 2.5rem 0 1rem;             /* 设置内边距 */
@@ -70,23 +70,23 @@
             
             /* 导航链接样式 - 顶部导航栏链接 */
             .nav-link {
-                @apply text-gray-600 hover:text-gray-900 text-sm; /* 应用灰色文字、悬停变深灰、小号字体 */
+                @apply text-black hover:text-black text-sm; /* 应用黑色文字、悬停不变色、小号字体 */
             }
             
             /* 页脚文字样式 - 页面底部文字 */
             .footer-text {
-                @apply p-4 text-center text-gray-500 text-sm; /* 应用内边距、文字居中、灰色文字、小号字体 */
+                @apply p-4 text-center text-black text-sm; /* 应用内边距、文字居中、黑色文字、小号字体 */
             }
             
             /* 快捷导航图标样式 - 主页快捷导航图标 */
             .quick-nav-icon {
-                @apply h-12 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-black flex items-center justify-center mb-2 transition-transform duration-200 hover:scale-110;
+                @apply w-12 h-12 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-black flex items-center justify-center mb-2 transition-transform duration-200 hover:scale-110;
                 /* 在小屏幕上高12像素，中等屏幕以上宽20高20像素，圆形、带边框、弹性布局居中、下边距、变换过渡、悬停放大 */
             }
             
             /* 快捷导航文字样式 - 主页快捷导航文字说明 */
             .quick-nav-text {
-                @apply text-sm text-gray-700;         /* 应用小号字体、深灰色文字 */
+                @apply text-sm text-black;         /* 应用小号字体、黑色文字 */
             }
             
             /* 页面主体样式 - 整个页面的主要内容区域 */
@@ -113,6 +113,14 @@
             /* 输入光标颜色样式 - 修改输入框光标颜色为橙色 */
             .caret-orange {
                 caret-color: orange;                  /* 光标颜色设为橙色 */
+            }
+            
+            /* 搜索输入框样式 */
+            .search-input {
+                @apply flex-grow px-4 focus:outline-none bg-white text-black transition-all duration-150 ease-in-out;
+                border: none;
+                box-shadow: none;
+                transition-property: none;
             }
             
             /* 小屏幕隐藏弹性布局样式 - 在小屏幕上隐藏但在中等屏幕以上显示的弹性布局 */
@@ -181,12 +189,69 @@
             src: url(fonts/QGYwz-AZahWOJJI9kykWW9mD6opopoqXSOSEEQgs.woff2) format('woff2');
             unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
         }
+
+        /* 黑夜模式样式 */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #555555;
+            }
+            
+            .search-container {
+                border-color: #555555;
+                background-color: #555555;
+            }
+            
+            .search-btn {
+                border-color: #555555;
+                background-color: #555555;
+            }
+            
+            .search-btn:hover {
+                background-color: #2d2d2d;
+                color: #000000;
+            }
+            
+            .nav-link:hover {
+                opacity: 1;
+                color: #000000;
+            }
+            
+            .clear-btn:hover {
+                opacity: 1;
+                color: #000000;
+            }
+            
+            .select-dropdown {
+                border-color: #555555;
+                background-color: #555555;
+            }
+            
+            .select-dropdown:hover {
+                background-color: #2d2d2d;
+            }
+            
+            .search-input {
+                background-color: #2d2d2d !important;
+                border: 1px solid transparent;
+            }
+            
+            /* 确保输入框在所有状态下都使用深色模式样式 */
+            #searchQuery {
+                background-color: #555555 !important;
+                color: #000000 !important;
+            }
+            
+            /* 确保所有文字在深色模式下也是黑色 */
+            .nav-link, .footer-text, .quick-nav-text, .search-btn, .clear-btn, .select-dropdown {
+                color: #000000 !important;
+            }
+        }
     </style>
 </head>
 
 <body class="page-body">
     <header class="flex justify-between items-center p-4">
-        <div class="desktop-nav text-gray-600 text-sm">收藏此网站吧</div>
+        <div class="desktop-nav text-sm">收藏此网站吧</div>
         <div class="desktop-nav flex items-center">
             <a href="https://blog.nekooy.com/post/guan-yu-zhu-ye.html" class="nav-link mr-6">关于</a>
         </div>
