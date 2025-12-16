@@ -2,38 +2,111 @@
 <html lang="zh-CN">
 
 <head>
+    <!-- 基础元信息 -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit">
     <meta name="force-rendering" content="webkit">
     <meta property="og:site_name" content="Nekooy">
-    <meta name="keywords" content="贰拾喵，Nekooy，分享空间，多引擎搜索，二次元，">
+    <meta name="keywords" content="贰拾喵，Nekooy，分享空间，多引擎搜索，二次元">
     <title>Nekooy小站 - 多样搜索和分享空间</title>
+    
+    <!-- Favicon设置 -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="favicon.ico">
     
-    <!-- 预加载字体以减少闪烁 -->
+    <!-- 字体预加载 -->
     <link rel="preload" href="fonts/QGYwz-AZahWOJJI9kykWW9mD6opopoqXSOSEEQgs.woff2" as="font" type="font/woff2" crossorigin>
     
+    <!-- 外部资源引入 -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
+    <!-- ================= 样式定义区域 ================= -->
+    
+    <!-- 1. 字体定义 -->
+    <style>
+        @font-face {
+            font-family: 'Covered By Your Grace';
+            font-style: normal;
+            font-weight: 400;
+            font-display: fallback;
+            src: url(fonts/QGYwz-AZahWOJJI9kykWW9mD6opopoqXSOSEHwgsm6Y.woff2) format('woff2');
+            unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+        }
+
+        @font-face {
+            font-family: 'Covered By Your Grace';
+            font-style: normal;
+            font-weight: 400;
+            font-display: fallback;
+            src: url(fonts/QGYwz-AZahWOJJI9kykWW9mD6opopoqXSOSEEQgs.woff2) format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+    </style>
+
+    <!-- 2. Tailwind CSS 工具类定义 -->
     <style type="text/tailwindcss">
         @layer utilities {
+            /* ========== 页面布局 ========== */
+            .page-body {
+                @apply min-h-screen flex flex-col;
+            }
+            
+            .logo-container {
+                @apply mb-0 flex justify-center;
+            }
+            
+            .logo-image {
+                @apply max-w-full h-auto rounded-2xl;
+            }
+            
+            .max-height-logo {
+                max-height: 150px;
+            }
+            
+            .title-container {
+                @apply mb-0;
+            }
+            
+            /* ========== 导航样式 ========== */
+            .desktop-nav {
+                @apply text-sm;
+            }
+            
+            .nav-link {
+                @apply text-black hover:text-black text-sm;
+            }
+            
+            .footer-text {
+                @apply p-4 text-center text-black text-sm;
+            }
+            
+            /* ========== 快速导航图标 ========== */
+            .quick-nav-icon {
+                @apply w-12 h-12 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-black flex items-center justify-center mb-2 transition-transform duration-200 hover:scale-110;
+            }
+            
+            .quick-nav-text {
+                @apply text-sm text-black;
+            }
+            
+            /* ========== 搜索组件 ========== */
             .search-container {
                 @apply border-4 border-black rounded-full overflow-hidden flex w-full max-w-2xl transition-all duration-200 ease-in-out;
                 height: 60px;
-                box-shadow:  0 0 5px  rgba(0, 0, 0, 0);
-            }
-
-            .search-btn {
-                @apply text-black font-medium py-2.5 transition duration-150 ease-in-out focus:outline-none border-black items-center justify-center;
-                width: 100px;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0);
             }
             
-            .clear-btn {
-                @apply flex items-center justify-center px-3 text-black hover:text-black;
+            .search-input {
+                @apply flex-grow px-4 focus:outline-none bg-white text-black transition-all duration-150 ease-in-out;
+                border: none;
+                box-shadow: none;
+            }
+            
+            .caret-orange {
+                caret-color: orange;
             }
             
             .select-dropdown {
@@ -48,61 +121,16 @@
                 text-align: center;
             }
             
-            .logo-container {
-                @apply mb-0 flex justify-center;
+            .search-btn {
+                @apply text-black font-medium py-2.5 transition duration-150 ease-in-out focus:outline-none border-black items-center justify-center;
+                width: 100px;
             }
             
-            .logo-image {
-                @apply max-w-full h-auto rounded-2xl;
+            .clear-btn {
+                @apply flex items-center justify-center px-3 text-black hover:text-black;
             }
             
-            .title-container {
-                @apply mb-0;
-            }
-            
-            .nav-link {
-                @apply text-black hover:text-black text-sm;
-            }
-            
-            .footer-text {
-                @apply p-4 text-center text-black text-sm;
-            }
-            
-            .quick-nav-icon {
-                @apply w-12 h-12 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-black flex items-center justify-center mb-2 transition-transform duration-200 hover:scale-110;
-            }
-            
-            .quick-nav-text {
-                @apply text-sm text-black;
-            }
-            
-            .page-body {
-                @apply min-h-screen flex flex-col;
-            }
-            
-            .nekooy-font {
-                font-family: 'Covered By Your Grace', cursive;
-                font-weight: bold;
-                color: black;
-                font-size: 4rem;
-                transform: scaleX(1.75);
-            }
-            
-            .max-height-logo {
-                max-height: 150px;
-            }
-            
-            .caret-orange {
-                caret-color: orange;
-            }
-            
-            .search-input {
-                @apply flex-grow px-4 focus:outline-none bg-white text-black transition-all duration-150 ease-in-out;
-                border: none;
-                box-shadow: none;
-                transition-property: none;
-            }
-            
+            /* ========== 辅助工具类 ========== */
             .hidden-sm-flex {
                 @apply hidden sm:flex;
             }
@@ -118,10 +146,21 @@
                 white-space: nowrap;
                 border-width: 0;
             }
+            
+            /* ========== 特殊样式 ========== */
+            .nekooy-font {
+                font-family: 'Covered By Your Grace', cursive;
+                font-weight: bold;
+                color: black;
+                font-size: 4rem;
+                transform: scaleX(1.75);
+            }
         }
     </style>
 
+    <!-- 3. 自定义动画和媒体查询 -->
     <style>
+        /* ========== 动画效果 ========== */
         .typing-animation {
             display: inline-block;
             opacity: 0;
@@ -133,7 +172,6 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -144,100 +182,133 @@
             height: 100px;
         }
 
-        @font-face {
-            font-family: 'Covered By Your Grace';
-            font-style: normal;
-            font-weight: 400;
-            font-display: fallback; /* 改为fallback以减少闪烁 */
-            src: url(fonts/QGYwz-AZahWOJJI9kykWW9mD6opopoqXSOSEHwgsm6Y.woff2) format('woff2');
-            unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-        }
-
-        @font-face {
-            font-family: 'Covered By Your Grace';
-            font-style: normal;
-            font-weight: 400;
-            font-display: fallback; /* 改为fallback以减少闪烁 */
-            src: url(fonts/QGYwz-AZahWOJJI9kykWW9mD6opopoqXSOSEEQgs.woff2) format('woff2');
-            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-        }
-
+        /* ========== 暗色主题支持 ========== */
         @media (prefers-color-scheme: dark) {
             body {
-                background-color: #555555;
+                background-color: #1a1a1a;
+                color: #ffffff;
             }
 
+            /* 搜索框组件暗色主题 */
             .search-container {
-                border-color: #555555;
-                background-color: #555555;
+                border: 4px solid #ffffff !important;
+                background-color: #1a1a1a;
             }
 
             .search-btn {
-                border-color: #555555;
-                background-color: #555555;
-            }
-
-            .nav-link:hover {
-                opacity: 1;
-                color: #000000;
-            }
-
-            .clear-btn:hover {
-                opacity: 1;
-                color: #000000;
+                border-color: #ffffff;
+                background-color: #1a1a1a;
             }
 
             .select-dropdown {
-                border-color: #555555;
-                background-color: #555555 !important;
+                border-color: #ffffff;
+                background-color: #1a1a1a !important;
+                color: #ffffff !important;
             }
 
             .search-input {
-                background-color: #2d2d2d !important;
+                background-color: #1a1a1a !important;
                 border: 1px solid transparent;
+                color: #ffffff !important;
             }
 
             #searchQuery {
-                background-color: #555555 !important;
-                color: #000000 !important;
+                background-color: #1a1a1a !important;
+                color: #ffffff !important;
             }
 
+            /* 导航链接暗色主题 */
             .nav-link,
             .footer-text,
             .quick-nav-text,
             .search-btn,
             .clear-btn,
             .select-dropdown {
-                color: #000000 !important;
+                color: #ffffff !important;
+            }
+
+            .nav-link:hover {
+                opacity: 0.8;
+                color: #ffffff;
+            }
+
+            .clear-btn:hover {
+                opacity: 0.8;
+                color: #ffffff;
+            }
+
+            /* 快速导航图标暗色主题 */
+            .quick-nav-icon {
+                border: 4px solid #ffffff !important;
+                background-color: #959595;
+            }
+
+            /* 标题文字暗色主题 */
+            .nekooy-font {
+                color: #ffffff;
+            }
+
+            .desktop-nav {
+                color: #ffffff;
+            }
+
+            /* 搜索框占位符样式 */
+            .search-input::placeholder,
+            #searchQuery::placeholder {
+                color: #6b7280 !important;
+                opacity: 0.6 !important;
+            }
+
+            /* 下拉选择框SVG图标颜色改为白色 */
+            .select-dropdown {
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='23' height='23' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
+            }
+
+            /* 确保nekooy字体在暗黑模式下也显示为白色 */
+            .nekooy-font,
+            #animated-text {
+                color: #ffffff !important;
+            }
+
+            #animated-text span {
+                color: #ffffff !important;
             }
         }
 
+        /* ========== 小屏幕适配 ========== */
         @media (max-width: 639px) {
             .clear-btn {
                 display: none !important;
             }
         }
     </style>
+    
+    <!-- ================= 样式定义结束 ================= -->
 </head>
 
 <body class="page-body">
+    <!-- 页面头部 -->
     <header class="flex justify-between items-center p-4">
-        <div class="desktop-nav text-sm">收藏此网站吧</div>
-        <div class="desktop-nav flex items-center">
+        <div class="desktop-nav">收藏此网站吧</div>
+        <nav class="desktop-nav flex items-center">
             <a href="https://blog.nekooy.com/post/jie-shao-yi-xia.html" class="nav-link mr-6">关于</a>
-        </div>
+        </nav>
     </header>
 
+    <!-- 主要内容区域 -->
     <main class="flex-grow flex flex-col items-center px-4 pt-8">
+        <!-- Logo展示 -->
         <div class="logo-container">
             <img src="logo.webp" alt="Nekooy Logo" class="logo-image max-height-logo">
         </div>
 
+        <!-- 标题动画 -->
         <div class="title-container">
             <h1 id="animated-text" class="nekooy-font">
             </h1>
         </div>
 
+        <!-- 搜索表单 -->
         <div class="w-full flex justify-center mb-8">
             <form id="searchForm" class="search-container" role="search">
                 <label for="searchEngine" class="sr-only">选择搜索引擎</label>
@@ -246,9 +317,7 @@
                     <option value="https://www.google.com/search?q=">谷歌</option>
                     <option value="https://www.baidu.com/s?word=">百度</option>
                     <option value="https://bgm.tv/subject_search/">动漫信息</option>
-                    <option
-                        value="https://weixin.sogou.com/weixinwap?ie=utf8&type=2&pg=webSearchList&_sug_=y&_sug_type_=&query=">
-                        微信</option>
+                    <option value="https://weixin.sogou.com/weixinwap?ie=utf8&type=2&pg=webSearchList&_sug_=y&_sug_type_=&query=">微信</option>
                     <option value="https://www.zhihu.com/search?q=">知乎</option>
                     <option value="https://www.google.com/search?q=site:bgm.tv">bgm.tv</option>
                 </select>
@@ -267,10 +336,10 @@
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
                 </button>
-
             </form>
         </div>
 
+        <!-- 快速导航区域 -->
         <section class="w-full max-w-3xl mx-auto px-4 mt-8 flex-grow flex flex-col justify-center">
             <div class="flex flex-col items-center space-y-4">
                 <div class="flex justify-center space-x-16">
@@ -304,16 +373,14 @@
                         <span class="quick-nav-text">GitHub</span>
                     </a>
 
-                    <a href="https://space.bilibili.com/1519363375" class="flex flex-col items-center"
-                        aria-label="哔哩哔哩">
+                    <a href="https://space.bilibili.com/1519363375" class="flex flex-col items-center" aria-label="哔哩哔哩">
                         <div class="quick-nav-icon">
                             <img src="picture/nav5.webp" alt="哔哩哔哩图标">
                         </div>
                         <span class="quick-nav-text">bilibili</span>
                     </a>
 
-                    <a href="https://www.bilibili.com/video/BV1GJ411x7h7" class="flex flex-col items-center"
-                        aria-label="彩蛋">
+                    <a href="https://www.bilibili.com/video/BV1GJ411x7h7" class="flex flex-col items-center" aria-label="彩蛋">
                         <div class="quick-nav-icon">
                             <img src="picture/nav6.webp" alt="彩蛋图标">
                         </div>
@@ -324,12 +391,21 @@
         </section>
     </main>
 
+    <!-- 页面底部 -->
     <footer class="footer-text mt-auto">
         <p>© 2025 Nekooy也叫贰拾喵哦</p>
     </footer>
 
+    <!-- ================= JavaScript代码区域 ================= -->
     <script>
+        // 页面加载完成后执行的初始化函数
         document.addEventListener('DOMContentLoaded', function () {
+            initTypingAnimation();
+            updateClearButtonVisibility();
+        });
+
+        // ========== 打字动画功能 ==========
+        function initTypingAnimation() {
             const textElement = document.getElementById('animated-text');
             const text = 'Nekooy';
             let index = 0;
@@ -346,8 +422,9 @@
                 }
             }
             addLetter();
-        });
+        }
 
+        // ========== 搜索功能 ==========
         document.getElementById('searchForm').addEventListener('submit', function (e) {
             e.preventDefault();
 
@@ -367,33 +444,28 @@
             }
         });
 
+        // 回车提交搜索
         document.getElementById('searchQuery').addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
                 document.getElementById('searchForm').dispatchEvent(new Event('submit'));
             }
         });
 
+        // ========== 清除按钮功能 ==========
         document.getElementById('clearSearch').addEventListener('click', function () {
             document.getElementById('searchQuery').value = '';
             updateClearButtonVisibility();
             document.getElementById('searchQuery').focus();
         });
 
+        // 监听输入变化以显示/隐藏清除按钮
         document.getElementById('searchQuery').addEventListener('input', updateClearButtonVisibility);
 
         function updateClearButtonVisibility() {
             const searchQuery = document.getElementById('searchQuery');
             const clearBtn = document.getElementById('clearSearch');
-            if (searchQuery.value.trim() !== '') {
-                clearBtn.style.display = 'flex';
-            } else {
-                clearBtn.style.display = 'none';
-            }
+            clearBtn.style.display = searchQuery.value.trim() !== '' ? 'flex' : 'none';
         }
-
-        document.addEventListener('DOMContentLoaded', function () {
-            updateClearButtonVisibility();
-        });
     </script>
 </body>
 
