@@ -68,10 +68,21 @@
             color: white;
             text-decoration: none;
             border-radius: 50%;
-            font-size: 1.5rem;
-            font-weight: bold;
             transition: background-color 0.3s ease;
             margin: 20px 0;
+            position: relative;
+        }
+        
+        .back-button::before {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-left: 3px solid white;
+            border-bottom: 3px solid white;
+            transform: translate(-50%, -50%) rotate(45deg);
+            left: 55%;
+            top: 50%;
         }
         
         .back-button:hover {
@@ -109,7 +120,7 @@
         <div class="error-content">
             <h1 class="error-title">๐·°(৹˃﹏˂৹)°·๐</h1>
             <p class="error-message">抱歉，您访问的页面不存在或已被移除。<br>请检查URL是否正确，或返回首页浏览其他内容。</p>
-            <a href="/" class="back-button" style="font-weight: bold;">←</a>
+            <a href="/" class="back-button"></a>
         </div>
     </div>
 </body>
