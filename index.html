@@ -80,7 +80,10 @@
             }
             
             .footer-text {
-                @apply p-4 text-center text-black text-sm;
+                @apply p-4 text-center text-black text-sm fixed bottom-0 left-0 right-0 z-10;
+                background-color: rgba(150, 150, 150, 0.3);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
             }
             
             /* ========== 快速导航图标 ========== */
@@ -103,6 +106,11 @@
                 @apply flex-grow px-4 focus:outline-none bg-white text-black transition-all duration-150 ease-in-out;
                 border: none;
                 box-shadow: none;
+            }
+            
+            /* 修复输入框焦点时左侧闪白线的问题 */
+            #searchQuery:focus {
+                outline: none !important;
             }
             
             .caret-orange {
@@ -273,6 +281,11 @@
             #animated-text span {
                 color: #ffffff !important;
             }
+            
+            /* 页脚暗色主题 */
+            .footer-text {
+                background-color: rgba(100, 100, 100, 0.3) !important;
+            }
         }
 
         /* ========== 小屏幕适配 ========== */
@@ -296,7 +309,7 @@
     </header>
 
     <!-- 主要内容区域 -->
-    <main class="flex-grow flex flex-col items-center px-4 pt-8">
+    <main class="flex-grow flex flex-col items-center px-4 pt-8 pb-20">
         <!-- Logo展示 -->
         <div class="logo-container">
             <img src="logo.webp" alt="Nekooy Logo" class="logo-image max-height-logo">
