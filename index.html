@@ -15,13 +15,14 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="favicon.ico">
+    <link rel="manifest" href="manifest.json">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
     
     <!-- 字体预加载 -->
     <link rel="preload" href="fonts/QGYwz-AZahWOJJI9kykWW9mD6opopoqXSOSEEQgs.woff2" as="font" type="font/woff2" crossorigin>
     
     <!-- 外部资源引入 -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- ================= 样式定义区域 ================= -->
     
@@ -80,10 +81,7 @@
             }
             
             .footer-text {
-                @apply p-4 text-center text-black text-sm fixed bottom-0 left-0 right-0 z-10;
-                background-color: rgba(150, 150, 150, 0.3);
-                backdrop-filter: blur(12px);
-                -webkit-backdrop-filter: blur(12px);
+                @apply p-2 text-center text-black text-sm mt-8;
             }
             
             /* ========== 快速导航图标 ========== */
@@ -282,10 +280,6 @@
                 color: #ffffff !important;
             }
             
-            /* 页脚暗色主题 */
-            .footer-text {
-                background-color: rgba(100, 100, 100, 0.3) !important;
-            }
         }
 
         /* ========== 小屏幕适配 ========== */
@@ -339,7 +333,7 @@
                     placeholder="回车以搜索..." autocomplete="off" aria-label="搜索关键词">
 
                 <button type="button" id="clearSearch" class="clear-btn" aria-label="清除搜索内容">
-                    <i class="fa fa-times"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                 </button>
 
                 <button type="submit" class="search-btn hidden-sm-flex" aria-label="搜索">
@@ -405,7 +399,7 @@
     </main>
 
     <!-- 页面底部 -->
-    <footer class="footer-text mt-auto">
+    <footer class="footer-text">
         <p>© 2025-2026 Nekooy也叫贰拾喵哦</p>
     </footer>
 
