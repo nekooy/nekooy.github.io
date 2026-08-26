@@ -1,5 +1,10 @@
 # AGENTS
 
+## 工作边界
+
+- 未经用户明确许可，不要执行 `git add` / `git commit` / `git push`。
+- 只做文件修改与本地构建验证（`pnpm dev` / `pnpm build` / `pnpm preview`），改完等待用户确认后再谈提交。
+
 ## 项目
 
 个人博客 nekooy.com，基于 Astro + React + Tailwind CSS。配置集中在 `src/config.json`，文章在 `src/content`。

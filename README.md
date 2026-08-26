@@ -1,6 +1,6 @@
 # Nekooy小站
 
-Nekooy小站（奈可伊）的个人博客，基于 [astro-gyoza](https://github.com/lxchapu/astro-gyoza) 主题搭建，使用 [Astro](https://astro.build/) + [React](https://reactjs.org/) + [Tailwind CSS](https://tailwindcss.com/)。
+Nekooy小站，奈可伊的个人博客，基于 [astro-gyoza](https://github.com/lxchapu/astro-gyoza) 主题搭建，使用 [Astro](https://astro.build/) + [React](https://reactjs.org/) + [Tailwind CSS](https://tailwindcss.com/)。
 
 在线地址：[nekooy.com](https://nekooy.com)
 
