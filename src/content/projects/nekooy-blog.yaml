@@ -1,0 +1,4 @@
+title: Nekooy Blog
+description: 本站源码：个人博客，基于 Astro + React + Tailwind CSS 构建，GitHub Actions 自动部署。
+image: /logo.webp
+link: https://github.com/nekooy/nekooy.github.io
