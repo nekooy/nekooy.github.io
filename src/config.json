@@ -1,8 +1,8 @@
 {
   "site": {
     "url": "https://nekooy.com",
-    "title": "Nekooy",
-    "description": "Nekooy（奈可伊）的个人博客，记录代码、生活与一切有趣的事物。",
+    "title": "Nekooy小站",
+    "description": "Nekooy小站（奈可伊）的个人博客，记录代码、生活与一切有趣的事物。",
     "keywords": "Nekooy,奈可伊,blog,Astro,个人博客",
     "lang": "zh-CN",
     "favicon": "/favicon.ico",

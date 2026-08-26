@@ -2,6 +2,7 @@
   "name": "nekooy-blog",
   "type": "module",
   "version": "0.0.1",
+  "packageManager": "pnpm@11.23.0",
   "scripts": {
     "dev": "astro dev",
     "build": "astro check && astro build && pagefind --site dist",
