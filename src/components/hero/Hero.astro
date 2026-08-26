@@ -1,5 +1,5 @@
 ---
-import { hero, author } from '@/config.json'
+import { hero } from '@/config.json'
 import { SocialList } from './SocialList'
 import Highlight from '@/components/Highlight.astro'
 ---
@@ -19,7 +19,7 @@ import Highlight from '@/components/Highlight.astro'
       <div
         class="size-[200px] lg:size-[300px] rounded-full overflow-hidden border border-primary bg-zinc-100 dark:bg-zinc-800"
       >
-        <img class="size-full" src={author.avatar} alt="Site owner avatar" loading="lazy" />
+        <img class="size-full" src="/hero-avatar.webp" alt="Site owner avatar" loading="lazy" />
       </div>
     </div>
 
