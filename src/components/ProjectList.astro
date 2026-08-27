@@ -20,7 +20,7 @@ const projects = (await getCollection('projects')) as unknown as ProjectItem[]
         <li>
           <a href={project.data.link} target="_blank" rel="noopener noreferrer external">
             <div class="rounded-lg bg-accent/10 overflow-hidden group">
-              <div class="aspect-video overflow-hidden">
+              <div class="aspect-video overflow-hidden diagonal-stripes">
                 <img
                   class="size-full object-cover transition-transform group-hover:scale-110"
                   src={project.data.image}
