@@ -2,7 +2,7 @@ import { author, site } from '@/config.json'
 import { getFormattedDateTime } from '@/utils/date'
 import { copyTextToClipboard } from '@/utils/clipboard'
 import { useEffect, useState } from 'react'
-import { toast } from "react-toastify";
+import { toast } from 'react-toastify'
 
 function getPostUrl(slug: string) {
   return new URL(slug, site.url).href
