@@ -2,7 +2,7 @@
   "site": {
     "url": "https://nekooy.com",
     "title": "Nekooy小站",
-    "description": "Nekooy小站（奈可伊）的个人博客，记录代码、生活与一切有趣的事物。",
+    "description": "Nekooy小站，我（奈可伊）的个人博客，记录代码、生活与一切有趣的事物。",
     "keywords": "Nekooy,奈可伊,blog,Astro,个人博客",
     "lang": "zh-CN",
     "favicon": "/favicon.ico",
@@ -15,7 +15,7 @@
   },
   "hero": {
     "name": "Nekooy",
-    "bio": "also known as 奈可伊",
+    "bio": "Come explore with me!",
     "description": "记录代码、生活与一切有趣的事物。",
     "socials": [
       {
