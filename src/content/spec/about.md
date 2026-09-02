@@ -27,6 +27,7 @@ comments: false
 
 - [GitHub](https://github.com/nekooy)
 - [哔哩哔哩](https://space.bilibili.com/1519363375)
+- [邮箱](mailto:nekooy@qq.com)（nekooy@qq.com）
 
 ## 致谢
 
