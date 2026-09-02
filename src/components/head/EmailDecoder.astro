@@ -1,0 +1,51 @@
+<script>
+  // Cloudflare 的「Email Address Obfuscation」会把 HTML 里的邮箱改写为
+  // /cdn-cgi/l/email-protection#加密串 的假链接或 [email protected] 占位文本，
+  // 其官方解密脚本(email-decode.min.js)只在整页加载时执行一次；
+  // SWUP 换页（fetch 拉取片段）不会被解密，导致邮箱链接点进 Cloudflare 的 Email Protection 页。
+  // 这里用与 Cloudflare 相同的 XOR 算法，在整页加载与每次 swup 换页后重新解密。
+
+  const CF_MARKERS = [
+    '/cdn-cgi/l/email-protection#',
+    'static.cloudflareinsights.com/email-protection#',
+  ]
+
+  function decodeHex(hex: string, from: number) {
+    const key = parseInt(hex.slice(from, from + 2), 16)
+    let out = ''
+    for (let i = from + 2; i < hex.length; i += 2) {
+      out += String.fromCharCode(parseInt(hex.slice(i, i + 2), 16) ^ key)
+    }
+    return out
+  }
+
+  function decodeEmails(root: ParentNode) {
+    // 1) 被改写成假链接的邮箱地址
+    root.querySelectorAll('a').forEach((anchor) => {
+      const href = anchor.getAttribute('href')
+      if (!href) return
+      const marker = CF_MARKERS.find((m) => href.includes(m))
+      if (!marker) return
+      const mail = decodeHex(href, href.indexOf(marker) + marker.length)
+      if (mail) anchor.href = `mailto:${mail}`
+    })
+    // 2) [email protected] 占位文本（链接内或纯文本场景）
+    root.querySelectorAll('span.__cf_email__[data-cfemail]').forEach((span) => {
+      const cfemail = span.getAttribute('data-cfemail')
+      if (!cfemail) return
+      const mail = decodeHex(cfemail, 0)
+      span.parentNode?.replaceChild(document.createTextNode(mail), span)
+    })
+  }
+
+  function handleContentReplace() {
+    decodeEmails(document)
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', handleContentReplace)
+  } else {
+    handleContentReplace()
+  }
+  document.addEventListener('swup:content:replace', handleContentReplace)
+</script>

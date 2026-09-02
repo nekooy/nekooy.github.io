@@ -4,6 +4,7 @@ import {
   WebAnalytics,
   ThemeLoader,
   AccentColorInjector,
+  EmailDecoder,
   PrintVersion,
 } from '@/components/head'
 import { BackToTopFAB } from '@/components/BackToTopFAB'
@@ -30,6 +31,7 @@ const { title, description, image } = Astro.props
     <WebAnalytics />
     <ThemeLoader />
     <AccentColorInjector />
+    <EmailDecoder />
     <PrintVersion />
   </head>
   <body>
