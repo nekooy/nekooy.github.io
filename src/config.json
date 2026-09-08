@@ -22,7 +22,7 @@
         "name": "Github",
         "icon": "icon-github",
         "url": "https://github.com/nekooy",
-        "color": "rgb(0, 0, 0)"
+        "color": "rgb(87, 96, 106)"
       },
       {
         "name": "Bilibili",
@@ -34,7 +34,7 @@
         "name": "Email",
         "icon": "icon-mail",
         "url": "mailto:nekoooy@outlook.com",
-        "color": "rgb(234, 88, 12)"
+        "color": "rgb(14, 165, 233)"
       }
     ],
     "yiyan": "世界很大，慢慢探索；生活很长，认真记录。"
