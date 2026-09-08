@@ -82,3 +82,9 @@ src/
 ├── styles/        # 全局样式
 └── config.json    # 站点配置（先改这个）
 ```
+
+## 📄 版权与许可
+
+本仓库基于 [astro-gyoza](https://github.com/lxchapu/astro-gyoza) 主题搭建，遵循原始 MIT 协议；在保留原作者（柃夏chapu）版权声明的前提下，本站代码部分（`src/`、`public/`、配置文件等）同样按 **MIT 协议** 开放。
+
+**文章、图片等内容**（`src/content/posts/`、`src/content/spec/`、`src/content/friends/`、`src/content/projects/`）采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 授权，禁止商业使用；非商业转载/改编时须署名「Nekooy」并注明出处，衍生作品需以相同协议共享。详见 [`LICENSE`](/LICENSE) 与 [`LICENSE-CONTENT.md`](/LICENSE-CONTENT.md)。
