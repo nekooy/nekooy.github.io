@@ -1,10 +1,10 @@
 ---
 title: Termux 额外按键（Extra Keys）配置分享：适配pi / opencode
 date: 2026-07-11
-lastMod: 2026-09-08T18:05:32+08:00
+lastMod: 2026-09-08T21:04:48+08:00
 summary: 手机上用 Termux 跑 pi / opencode 这类终端 AI，最缺的就是 ESC、方向键和 /new 这些命令。分享我的三行额外按键布局，附效果截图与可直接复制的 termux.properties 配置。
-category: 效率
-tags: [Termux, Android, 效率, AI]
+category: 分享
+tags: [Termux, Android, 效率, AI, 分享]
 ---
 
 在手机上用 Termux 跑 [pi](https://pi.dev) / [opencode](https://opencode.ai) 这类终端 AI，最大的痛点是输入法没有 ESC、TAB、方向键，敲 `/new`、`/session` 这类命令又慢又容易错。Termux 的**额外按键（Extra Keys）**——底部那排可以完全自定义的按键，正好解决这个问题。下面是我的布局和配置。
