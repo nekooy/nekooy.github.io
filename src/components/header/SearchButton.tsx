@@ -3,11 +3,25 @@ import { useCurrentModal, useModal } from '@/components/ui/modal'
 import { useEffect, useState } from 'react'
 import { useDebounceValue } from '@/hooks/useDebounceValue'
 
-let pagefind: any = null
+interface PagefindResultData {
+  url: string
+  meta: { title: string }
+  excerpt: string
+}
+
+interface PagefindResult {
+  data: () => Promise<PagefindResultData>
+}
+
+interface PagefindModule {
+  search: (query: string) => Promise<{ results: PagefindResult[] }>
+}
+
+let pagefind: PagefindModule | null = null
 async function loadPagefind() {
   if (import.meta.env.PROD && !pagefind) {
     const url = '/pagefind/pagefind.js'
-    pagefind = await import(/* @vite-ignore */ url)
+    pagefind = (await import(/* @vite-ignore */ url)) as PagefindModule
   }
 }
 
@@ -37,7 +51,7 @@ export function SearchButton() {
 function SearchPanel() {
   const [keyword, setKeyword] = useState('')
   const [isLoading, setIsLoading] = useState(false)
-  const [results, setResults] = useState<any[]>([])
+  const [results, setResults] = useState<PagefindResultData[]>([])
   const debouncedKeyword = useDebounceValue(keyword, 350)
 
   const { dismiss } = useCurrentModal()
@@ -51,7 +65,7 @@ function SearchPanel() {
     await loadPagefind()
     if (pagefind) {
       const res = await pagefind.search(value)
-      const nextResults = await Promise.all(res.results.map((r: any) => r.data()))
+      const nextResults = await Promise.all(res.results.map((r) => r.data()))
       setResults(nextResults)
     }
     setIsLoading(false)
