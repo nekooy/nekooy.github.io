@@ -1,0 +1,4 @@
+title: PiKit
+description: 将 pi 与 Termux 装进同一个 APK 的简洁安卓 AI agent，内置 Node.js、ripgrep 与 fd，开箱即用。
+link: https://github.com/nekooy/PiKit
+image: /pikit-icon.svg

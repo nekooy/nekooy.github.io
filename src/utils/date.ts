@@ -1,21 +1,16 @@
-// 获取两个日期的相对时间
+// 获取两个日期的相对时间（按日历天计算，避免只有日期时显示成「N 小时前」）
 export function getRelativeTime(startDate: Date, endDate = new Date()) {
   const diffSeconds = Math.floor((endDate.getTime() - startDate.getTime()) / 1000)
   if (diffSeconds < 0) {
     return null
   }
-  const diffMinutes = Math.floor(diffSeconds / 60)
-  if (diffMinutes < 10) {
-    return '刚刚'
+  const diffDays = getDiffInDays(getStartOfDay(startDate), getStartOfDay(endDate))
+  if (diffDays === 0) {
+    return diffSeconds < 600 ? '刚刚' : '今天'
   }
-  if (diffMinutes < 60) {
-    return `${diffMinutes} 分钟前`
+  if (diffDays === 1) {
+    return '昨天'
   }
-  const diffHours = Math.floor(diffMinutes / 60)
-  if (diffHours < 24) {
-    return `${diffHours} 小时前`
-  }
-  const diffDays = Math.floor(diffHours / 24)
   if (diffDays < 10) {
     return `${diffDays} 天前`
   }
