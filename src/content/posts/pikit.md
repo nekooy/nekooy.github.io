@@ -1,18 +1,18 @@
 ---
-title: PiKit 发布：基于 pi 与 Termux 的开箱即用安卓 AI Agent
+title: PiKit 发布：一个基于 pi 和 Termux 的简洁安卓 AI Agent
 date: 2026-09-23
-lastMod: 2026-10-13T10:56:37+08:00
+lastMod: 2026-10-13T11:18:12+08:00
 summary: 一直想要一个开箱即用、又简洁美观的手机 AI Agent——试过一圈都不够顺手，于是自己做了 PiKit。介绍它是什么、为什么做，以及怎么装到手机上。
 category: 分享
 tags: [PiKit, Android, AI, pi, Termux, 分享]
 cover: /pikit-preview.webp
 ---
 
-手机上不缺会聊天的 AI，缺的是**开箱即用、又简洁美观的专业 Agent**。为了这么一个东西，我试过不少 App，也折腾过 Termux + [pi](https://pi.dev)，最后决定自己动手——项目叫 **[PiKit](https://github.com/nekooy/PiKit)**，一个基于 pi 和 Termux、开箱即用、界面干净的安卓 AI Agent。
+手机上不缺会聊天的 AI，缺的是**开箱即用、又简洁美观的专业 Agent**。为了这么一个东西，我试过不少 App，也折腾过 Termux + [pi](https://pi.dev)，最后决定自己动手——项目叫 **[PiKit](https://github.com/nekooy/PiKit)**，一个基于 pi 和 Termux 的简洁安卓 AI Agent。
 
 ## 一、PiKit 是什么
 
-一句话：**一个开箱即用、界面干净的 Android AI Agent。**
+一句话：**一个简洁、开箱即用的 Android AI Agent。**
 
 装好 APK 就能直接用：Termux 环境、Node.js 与 `pi` 命令行都打包在包里，首次启动解包即用，不必再配软件源或额外下载。提问仍要送到模型供应商，所以唯一需要的网络是「能连上那家供应商」。
 
