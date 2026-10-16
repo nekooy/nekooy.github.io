@@ -80,8 +80,9 @@ tailwind.config.ts    Tailwind 配置；深色模式为 `[data-theme='dark']` �
 
 ## 工作边界
 
-- 未经用户明确许可，不要执行 `git add` / `git commit` / `git push`。
-- 只做文件修改与本地构建验证（`pnpm dev` / `pnpm build` / `pnpm preview`），改完等待用户确认后再谈提交。
+- 每完成一个任务、且验证无误（按「改动完成后的标准验证」执行）后，可自行 `git add` / `git commit` 提交本次改动，避免累积过多更改导致难以提交；提交信息须遵循「提交规范」。
+- `git push` 推送到远程必须经用户明确批准后才可执行，不得自行推送。
+- 只做文件修改与本地构建验证（`pnpm dev` / `pnpm build` / `pnpm preview`）及上述本地提交，不要自行发布或部署。
 
 ## 提交规范
 
