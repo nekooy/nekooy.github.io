@@ -18,9 +18,15 @@ const projects = (await getCollection('projects')) as unknown as ProjectItem[]
     <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8">
       {projects.map((project) => (
         <li>
-          <a href={project.data.link} target="_blank" rel="noopener noreferrer external">
-            <div class="rounded-lg bg-accent/10 overflow-hidden group">
-              <div class="aspect-video overflow-hidden diagonal-stripes flex items-center justify-center">
+          <a
+            class="block h-full"
+            href={project.data.link}
+            target="_blank"
+            rel="noopener noreferrer external"
+          >
+            {/* 卡片在宽屏按行等高：外层撑满格子，图片区固定比例，文字区吃掉剩余高度 */}
+            <div class="h-full flex flex-col overflow-hidden rounded-lg bg-accent/10 group">
+              <div class="aspect-video shrink-0 overflow-hidden diagonal-stripes flex items-center justify-center">
                 <img
                   class="size-1/2 object-contain transition-transform group-hover:scale-110"
                   src={project.data.image}
@@ -28,7 +34,7 @@ const projects = (await getCollection('projects')) as unknown as ProjectItem[]
                   loading="lazy"
                 />
               </div>
-              <div class="p-4">
+              <div class="p-4 grow">
                 <div class="group-hover:text-accent">
                   <span class="text-xl font-bold">{project.data.title}</span>
                   <i class="ml-2 iconfont icon-external-link" />
