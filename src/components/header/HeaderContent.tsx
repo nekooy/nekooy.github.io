@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { menus } from '@/config.json'
 import { clsx } from 'clsx'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, m } from 'framer-motion'
 import {
   usePathName,
   useShouldAccessibleMenuShow,
@@ -26,9 +26,9 @@ function AnimatedMenu() {
   return (
     <AnimatePresence>
       {!shouldHeaderMetaShow && (
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+        <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
           <HeaderMenu isBgShow={shouldBgShow} />
-        </motion.div>
+        </m.div>
       )}
     </AnimatePresence>
   )
@@ -41,14 +41,14 @@ function AccessibleMenu() {
     <RootPortal>
       <AnimatePresence>
         {shouldShow && (
-          <motion.div
+          <m.div
             className="fixed z-10 top-12 inset-x-0 flex justify-center pointer-events-none"
             initial={{ y: -20 }}
             animate={{ y: 0 }}
             exit={{ y: -20, opacity: 0 }}
           >
             <HeaderMenu isBgShow />
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </RootPortal>
@@ -116,11 +116,11 @@ function HeaderMenuItem({
     >
       <div className="flex space-x-2">
         {isActive && (
-          <motion.i
+          <m.i
             className={clsx('iconfont', icon)}
             initial={{ y: 10, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-          ></motion.i>
+          ></m.i>
         )}
         <span>{title}</span>
       </div>

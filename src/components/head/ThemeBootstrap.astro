@@ -1,0 +1,38 @@
+---
+import chroma from 'chroma-js'
+import { color as themeColor } from '@/config.json'
+
+// 构建期把整套配色算好并内联进 HTML：
+// 1) <style is:inline> 提供 --color-* 的静态兜底值，外部样式表到达前底色就已经正确；
+// 2) <script is:inline> 在首次绘制前设置 data-theme 与随机主题色，
+//    因此不再需要「先白后黑」的等待，客户端也不再打包 chroma-js。
+
+function toRgb(value: string) {
+  return chroma(value).rgb().join(' ')
+}
+
+function mix(base: string, accent: string, ratio: number) {
+  return chroma.mix(base, accent, ratio, 'rgb').rgb().join(' ')
+}
+
+const LIGHT_BASE = 'rgb(250,250,250)'
+const DARK_BASE = 'rgb(0,2,18)'
+
+// [亮色主题色, 亮色根背景, 暗色主题色, 暗色根背景]
+const palette = themeColor.accent.map((accent) => [
+  toRgb(accent.light),
+  mix(LIGHT_BASE, accent.light, 0.05),
+  toRgb(accent.dark),
+  mix(DARK_BASE, accent.dark, 0.12),
+])
+
+const fallback = palette[0]
+
+const css = `html{color-scheme:light;--accent-light:${fallback[0]};--accent-dark:${fallback[2]};--bg-root-light:${fallback[1]};--bg-root-dark:${fallback[3]};--color-accent:var(--accent-light);--color-bg-root:var(--bg-root-light);--color-bg-primary:${toRgb(themeColor.bg.primary.light)};--color-bg-secondary:${toRgb(themeColor.bg.secondary.light)};--color-text-primary:${toRgb(themeColor.text.primary.light)};--color-text-secondary:${toRgb(themeColor.text.secondary.light)};--color-border-primary:${toRgb(themeColor.border.primary.light)}}html[data-theme='dark']{color-scheme:dark;--color-accent:var(--accent-dark);--color-bg-root:var(--bg-root-dark);--color-bg-primary:${toRgb(themeColor.bg.primary.dark)};--color-bg-secondary:${toRgb(themeColor.bg.secondary.dark)};--color-text-primary:${toRgb(themeColor.text.primary.dark)};--color-text-secondary:${toRgb(themeColor.text.secondary.dark)};--color-border-primary:${toRgb(themeColor.border.primary.dark)}}`
+
+const script = `(function(){var KEY='nekooy-theme';var PALETTE=${JSON.stringify(palette)};var MOURNING=['4-4','5-12','7-7','9-18','12-13'];var root=document.documentElement;var stored=null;try{stored=localStorage.getItem(KEY)}catch(e){}if(stored!=='dark'&&stored!=='light'){stored='system';try{localStorage.setItem(KEY,'system')}catch(e){}}function systemTheme(){return window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}function applyAccent(){var p=PALETTE[(Math.random()*PALETTE.length)|0];root.style.setProperty('--accent-light',p[0]);root.style.setProperty('--bg-root-light',p[1]);root.style.setProperty('--accent-dark',p[2]);root.style.setProperty('--bg-root-dark',p[3])}root.setAttribute('data-theme',stored==='system'?systemTheme():stored);applyAccent();var now=new Date();if(MOURNING.indexOf((now.getMonth()+1)+'-'+now.getDate())!==-1){root.classList.add('gray')}document.addEventListener('swup:content:replace',applyAccent)})()`
+---
+
+<meta name="color-scheme" content="light dark" />
+<style is:inline set:html={css}></style>
+<script is:inline set:html={script} />

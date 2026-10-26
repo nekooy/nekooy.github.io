@@ -2,6 +2,7 @@
 import type { CollectionEntry } from 'astro:content'
 import { PostCardHoverOverlay } from './PostCardHoverOverlay'
 import PostMetaInfo from './PostMetaInfo.astro'
+import { getCoverThumb } from '@/utils/image'
 
 interface Props {
   entry: CollectionEntry<'posts'>
@@ -10,9 +11,12 @@ interface Props {
 const { entry } = Astro.props
 
 const { remarkPluginFrontmatter } = await entry.render()
+
+const coverThumb = getCoverThumb(entry.data.cover)
 ---
 
 <a class="block relative py-8 focus-visible:outline-0" href={`/posts/${entry.slug}`}>
+  {/* client:only：组件根节点是 0×0 的隐藏占位，用 client:visible 永远不会水合 */}
   <PostCardHoverOverlay client:only="react" />
   <h2 class="relative text-2xl font-bold">
     {entry.data.title}
@@ -24,12 +28,15 @@ const { remarkPluginFrontmatter } = await entry.render()
   </h2>
   <div class="mt-4 overflow-hidden">
     {
-      entry.data.cover && (
+      coverThumb && (
         <img
           class="float-right ml-3 mb-2 size-[80px] rounded-md object-cover select-none"
-          src={entry.data.cover}
+          src={coverThumb}
           alt={entry.data.title}
+          width="80"
+          height="80"
           loading="lazy"
+          decoding="async"
         />
       )
     }

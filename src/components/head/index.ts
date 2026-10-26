@@ -1,6 +1,5 @@
-export { default as AccentColorInjector } from './AccentColorInjector.astro'
 export { default as CommonHead } from './CommonHead.astro'
 export { default as EmailDecoder } from './EmailDecoder.astro'
 export { default as PrintVersion } from './PrintVersion.astro'
-export { default as ThemeLoader } from './ThemeLoader.astro'
+export { default as ThemeBootstrap } from './ThemeBootstrap.astro'
 export { WebAnalytics } from './WebAnalytics'

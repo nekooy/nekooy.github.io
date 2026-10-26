@@ -9,6 +9,7 @@ import { rehypeHeading } from './src/plugins/rehypeHeading'
 import remarkDirective from 'remark-directive'
 import { remarkSpoiler } from './src/plugins/remarkSpoiler'
 import { remarkEmbed } from './src/plugins/remarkEmbed'
+import { remarkHasMath } from './src/plugins/remarkHasMath'
 import tailwind from '@astrojs/tailwind'
 import react from '@astrojs/react'
 import sitemap from '@astrojs/sitemap'
@@ -35,7 +36,14 @@ export default defineConfig({
   markdown: {
     syntaxHighlight: false,
     smartypants: false,
-    remarkPlugins: [remarkMath, remarkDirective, remarkEmbed, remarkSpoiler, remarkReadingTime],
+    remarkPlugins: [
+      remarkMath,
+      remarkDirective,
+      remarkEmbed,
+      remarkSpoiler,
+      remarkReadingTime,
+      remarkHasMath,
+    ],
     rehypePlugins: [
       rehypeHeadingIds,
       rehypeKatex,

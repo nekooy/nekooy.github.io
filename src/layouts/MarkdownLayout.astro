@@ -4,7 +4,6 @@ import { HeadGradient } from '@/components/head-gradient'
 import Footer from '@/components/footer/Footer.astro'
 import { Header } from '@/components/header/Header'
 import { Provider } from '@/components/provider/Provider'
-import 'katex/dist/katex.min.css'
 
 interface Props {
   title: string
@@ -13,12 +12,18 @@ interface Props {
   mdTitle: string
   mdDescription: string
   mdSlug: string
+  /** 该页正文是否含公式；只有含公式时才引入 KaTeX 样式（约 8KB gzip） */
+  hasMath?: boolean
 }
 
-const { title, description, image, mdTitle, mdDescription, mdSlug } = Astro.props
+const { title, description, image, mdTitle, mdDescription, mdSlug, hasMath = false } = Astro.props
+
+// 动态引入含 KaTeX 样式的组件：没有公式的页面不会把它拉进页面的 CSS 依赖图
+const KatexStyles = hasMath ? (await import('@/components/post/KatexStyles.astro')).default : null
 ---
 
 <Layout title={title} description={description} image={image}>
+  {KatexStyles && <KatexStyles />}
   <Provider
     pathName={Astro.url.pathname}
     title={mdTitle}

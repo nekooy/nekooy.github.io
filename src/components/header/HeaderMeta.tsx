@@ -1,5 +1,5 @@
 import { site } from '@/config.json'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, m } from 'framer-motion'
 import { useHeaderMetaInfo, useShouldHeaderMetaShow } from './hooks'
 
 export function HeaderMeta() {
@@ -9,7 +9,7 @@ export function HeaderMeta() {
   return (
     <AnimatePresence>
       {shouldShow && (
-        <motion.div
+        <m.div
           className="absolute inset-0 z-1 flex items-center justify-between md:px-10"
           initial={{
             opacity: 0,
@@ -32,7 +32,7 @@ export function HeaderMeta() {
             <div className="text-secondary text-xs truncate">{slug}</div>
             <div>{site.title}</div>
           </div>
-        </motion.div>
+        </m.div>
       )}
     </AnimatePresence>
   )

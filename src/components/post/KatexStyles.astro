@@ -1,0 +1,8 @@
+---
+// 只做一件事：把 KaTeX 的样式表以静态资源 URL 的形式引入当前页面。
+// 用 ?url 而不是直接 import：CSS 不会被并进页面的 CSS 依赖图，
+// 只有含公式的页面才会输出这一条 <link>（约 8KB gzip + 20 条字体声明）。
+import katexCssUrl from 'katex/dist/katex.min.css?url'
+---
+
+<link rel="stylesheet" href={katexCssUrl} />

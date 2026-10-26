@@ -1,12 +1,13 @@
 import { sponsor, site } from '@/config.json'
 import { copyTextToClipboard } from '@/utils/clipboard'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import * as QR from 'qrcode.react'
 import { useAtomValue } from 'jotai'
 import { metaSlugAtom, metaTitleAtom } from '@/store/metaInfo'
 import clsx from 'clsx'
-import { toast } from 'react-toastify'
+import { toast } from '@/utils/toast'
 import { useModal } from '@/components/ui/modal'
+import { MotionProvider } from '@/components/provider/MotionProvider'
 
 interface ShareData {
   url: string
@@ -39,15 +40,17 @@ const shareList = [
 
 export function ActionAside() {
   return (
-    <div
-      className="absolute left-0 bottom-0 flex flex-col gap-4"
-      style={{
-        transform: 'translateY(calc(100% + 24px))',
-      }}
-    >
-      <ShareButton />
-      {sponsor.wechat && <DonateButton />}
-    </div>
+    <MotionProvider>
+      <div
+        className="absolute left-0 bottom-0 flex flex-col gap-4"
+        style={{
+          transform: 'translateY(calc(100% + 24px))',
+        }}
+      >
+        <ShareButton />
+        {sponsor.wechat && <DonateButton />}
+      </div>
+    </MotionProvider>
   )
 }
 
@@ -79,7 +82,7 @@ function ShareButton() {
 
 function ShareModal({ url, text }: { url: string; text: string }) {
   return (
-    <motion.div
+    <m.div
       className="bg-primary rounded-lg p-2 min-w-[420px] border border-primary flex flex-col"
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
@@ -107,7 +110,7 @@ function ShareModal({ url, text }: { url: string; text: string }) {
           </ul>
         </div>
       </div>
-    </motion.div>
+    </m.div>
   )
 }
 
@@ -134,7 +137,7 @@ function DonateButton() {
 
 function DonateContent() {
   return (
-    <motion.div
+    <m.div
       initial={{ y: 20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       exit={{ y: 20, opacity: 0 }}
@@ -151,6 +154,6 @@ function DonateContent() {
           decoding="async"
         />
       </div>
-    </motion.div>
+    </m.div>
   )
 }

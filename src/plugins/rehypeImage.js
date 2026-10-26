@@ -19,7 +19,8 @@ export function rehypeImage() {
 function buildImage(node) {
   const imgProps = node.properties
 
-  return h('img', { ...imgProps, loading: 'lazy' })
+  // decoding="async" 让图片解码不阻塞主线程，视觉结果不变
+  return h('img', { ...imgProps, loading: 'lazy', decoding: 'async' })
 }
 
 function buildFigure(node) {

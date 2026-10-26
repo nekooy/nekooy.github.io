@@ -1,6 +1,5 @@
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, m } from 'framer-motion'
 import { useShouldHeaderMetaShow, useIsMobile } from './hooks'
-import { author } from '@/config.json'
 
 export function AnimatedLogo() {
   const isMobile = useIsMobile()
@@ -13,9 +12,9 @@ export function AnimatedLogo() {
   return (
     <AnimatePresence>
       {!shouldHeaderMetaShow && (
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+        <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
           <Logo />
-        </motion.div>
+        </m.div>
       )}
     </AnimatePresence>
   )
@@ -26,8 +25,11 @@ function Logo() {
     <a className="block" href="/" title="Nav to home">
       <img
         className="size-[40px] select-none object-cover rounded-2xl"
-        src={author.avatar}
+        src="/logo-thumb.webp"
         alt="Site owner avatar"
+        width="40"
+        height="40"
+        decoding="async"
       />
     </a>
   )

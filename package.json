@@ -5,9 +5,10 @@
   "packageManager": "pnpm@11.23.0",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro check && astro build && pagefind --site dist",
+    "build": "astro check && pnpm gen-thumbs && astro build && pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro",
+    "gen-thumbs": "node scripts/gen-thumbnails.js",
     "lint": "prettier --write .",
     "new-friend": "node scripts/new-friend.js",
     "new-post": "node scripts/new-post.js",
@@ -55,6 +56,7 @@
     "@inquirer/prompts": "^5.0.2",
     "micromark-util-symbol": "^2.0.0",
     "prettier": "^3.2.5",
-    "prettier-plugin-astro": "^0.13.0"
+    "prettier-plugin-astro": "^0.13.0",
+    "sharp": "0.32.6"
   }
 }
