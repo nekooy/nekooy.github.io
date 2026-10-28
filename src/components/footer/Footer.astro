@@ -7,7 +7,7 @@ import Link from './Link.astro'
 
 const sinceYear = new Date(footer.startTime).getFullYear()
 const thisYear = new Date().getFullYear()
-const copyDate = sinceYear === thisYear ? thisYear : `${sinceYear} - ${thisYear}`
+const copyDate = sinceYear === thisYear ? thisYear : `${sinceYear}–${thisYear}`
 
 const wordCount = await getAllPostsWordCount()
 
@@ -23,7 +23,7 @@ const wordCountStr = (wordCount / 1000).toFixed(1) + 'k'
       <Link href="https://github.com/lxchapu/astro-gyoza">Gyoza</Link>
     </div>
     <div class="space-x-1">
-      <span>&copy;{copyDate} <Link href="/">{author.name}</Link>.</span>
+      <span>&copy;{copyDate} <Link href="/">{author.name}</Link></span>
       <Link href="/rss.xml" data-no-swup>
         <i class="iconfont icon-rss"></i>
         <span>RSS</span>
