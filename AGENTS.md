@@ -62,7 +62,7 @@ tailwind.config.ts    Tailwind 配置；深色模式为 `[data-theme='dark']` �
   - LaTeX：`$...$` / `$$...$$`（remark-math + rehype-katex）
   - 代码高亮由 `rehypeCodeBlock` / `rehypeCodeHighlight`（Shiki）处理，`astro.config.js` 中 `syntaxHighlight: false`，不要依赖 Astro 内置高亮。
   - 脚注标签固定为「参考」/「返回正文」。
-  - 图片：放 `public/`，正文以 `/` 开头的路径引用；图片全局最大宽度为内容区的 60%（见 `markdown.css` 的 `.markdown img`），正文里无需、也不要手动指定图片大小。
+  - 图片：放 `public/`，正文以 `/` 开头的路径引用；图片全局最大宽度为内容区的 60%（见 `markdown.css` 的 `.markdown img`），正文里无需、也不要手动指定图片大小。点击图片会打开灯箱预览（缩放、多图切换，Esc / 点遮罩 / 右上角按钮关闭），无需额外标记；确实不想参与预览的图片，用 `<img ... data-no-preview>` 直接写进正文。
 - 修改已有文章时，必须同步更新 frontmatter 的 `lastMod`（缺失则补上），值为本次修改时间；只改正文而漏更新 `lastMod` 属于不规范操作。
 - 标题分点规范：文章一级标题（`##`）统一用中文数字编号，如 `## 一、xxx`；二级及以下（`###` 等）按内容情况选择合适的编号样式（如（一）、1.、第 X 行），不强求统一。
 - 仅修改文章内容（如 `src/content/posts/*.md`、`spec/*.md` 正文）时，无需跑完整 `pnpm build`——不涉及代码与类型，基本不会出错，需要时用 `pnpm dev` 预览即可；但触及 collection schema、布局或 Markdown 管道时仍必须完整构建。

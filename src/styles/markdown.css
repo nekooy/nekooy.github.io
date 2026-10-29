@@ -91,6 +91,15 @@
   @apply rounded-lg bg-secondary min-h-[80px] min-w-[80px] max-w-[60%];
 }
 
+/* 灯箱 hydration 完成后才提示可点击；脚本没跑时保持原来的观感 */
+html.image-lightbox-ready .markdown img {
+  @apply cursor-zoom-in;
+}
+
+html.image-lightbox-ready .markdown img:focus-visible {
+  @apply outline outline-2 outline-offset-2 outline-accent;
+}
+
 .markdown figure {
   @apply mb-5 flex flex-col items-center;
 }

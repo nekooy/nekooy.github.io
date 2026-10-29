@@ -19,8 +19,9 @@ export function rehypeImage() {
 function buildImage(node) {
   const imgProps = node.properties
 
-  // decoding="async" 让图片解码不阻塞主线程，视觉结果不变
-  return h('img', { ...imgProps, loading: 'lazy', decoding: 'async' })
+  // decoding="async" 让图片解码不阻塞主线程，视觉结果不变；
+  // tabindex="0" 让键盘用户也能聚焦图片并用回车打开灯箱（见 ui/image-lightbox）。
+  return h('img', { ...imgProps, loading: 'lazy', decoding: 'async', tabIndex: 0 })
 }
 
 function buildFigure(node) {

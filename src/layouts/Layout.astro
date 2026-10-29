@@ -7,6 +7,7 @@ import {
   PrintVersion,
 } from '@/components/head'
 import { BackToTopFAB } from '@/components/BackToTopFAB'
+import { ImageLightbox } from '@/components/ui/image-lightbox'
 import { ModalStack } from '@/components/ui/modal'
 import { site } from '@/config.json'
 import '@/styles/global.css'
@@ -35,5 +36,7 @@ const { title, description, image } = Astro.props
 
     <BackToTopFAB client:only="react" />
     <ModalStack client:only="react" />
+    <!-- 图片灯箱：挂在 main 之外，swup 换页不会卸载事件委托 -->
+    <ImageLightbox client:idle />
   </body>
 </html>
