@@ -1,7 +1,7 @@
 ---
 title: PiKit 发布：一个基于 pi 和 Termux 的简洁安卓 AI Agent
 date: 2026-09-23
-lastMod: 2026-10-30T09:05:18+08:00
+lastMod: 2026-10-30T09:10:10+08:00
 summary: 一直想要一个开箱即用、又简洁美观的手机 AI Agent——试过一圈都不够顺手，于是自己做了 PiKit。介绍它是什么、为什么做，以及怎么装到手机上。
 category: 分享
 tags: [PiKit, Android, AI, pi, Termux, 分享]
@@ -30,7 +30,7 @@ cover: /pikit-preview.webp
 
 自己折腾 Termux + pi 那条路也不轻松：环境搭建步骤多，换机、重装就来一遍；网络环境一差，`pkg install` 就开始漫长重试；好不容易跑起来，输入法还缺 ESC / TAB / 方向键。
 
-PiKit 把第一类问题直接消掉：**运行时是 APK 的一部分**，首次启动解包（约 300 MB，几秒即可）就能用；第二类交给原生界面——手机键盘没有的按键、模型与思考等级的开关都做在应用里，不重启 Agent 就生效。
+**PiKit** 把第一类问题直接消掉：**运行时是 APK 的一部分**，首次启动解包（约 300 MB，几秒即可）就能用；第二类交给原生界面——手机键盘没有的按键、模型与思考等级的开关都做在应用里，不重启 Agent 就生效。
 
 设计上也有几条刻意的克制，不少是被上面那些 App「教育」出来的：不往里堆功能；没有账号，也没有遥测；不上架 Google Play（Play 的政策也不接受这类会申请「所有文件访问权限」的应用），只从 [Releases](https://github.com/nekooy/PiKit/releases/latest) 直接发 APK。
 
