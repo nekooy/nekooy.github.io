@@ -1,7 +1,7 @@
 ---
 title: PiKit 发布：一个基于 pi 和 Termux 的简洁安卓 AI Agent
 date: 2026-09-23
-lastMod: 2026-10-30T08:30:04+08:00
+lastMod: 2026-10-30T08:57:03+08:00
 summary: 一直想要一个开箱即用、又简洁美观的手机 AI Agent——试过一圈都不够顺手，于是自己做了 PiKit。介绍它是什么、为什么做，以及怎么装到手机上。
 category: 分享
 tags: [PiKit, Android, AI, pi, Termux, 分享]
@@ -16,7 +16,7 @@ cover: /pikit-preview.webp
 
 装好 APK 就能直接用：Termux 环境、Node.js 与 `pi` 命令行都打包在包里，首次启动解包即用，不必再配软件源或额外下载。提问仍要送到模型供应商，所以网络至少要能连上那家供应商。
 
-界面用 Kotlin 与 Jetpack Compose 写成，按 **Miuix**（MIUI / HyperOS 风格的 Compose 组件库）绘制，架在一个引入的 Termux 终端之上，**任何地方都没有 WebView**。目前有英文、简体中文和日文三套文案。
+界面用 Kotlin 与 Jetpack Compose 写成，按 **Miuix**（MIUI / HyperOS 风格的 Compose 组件库）绘制，架在一个引入的 Termux 终端之上，没有 WebView。目前有英文、简体中文和日文三套文案。
 
 ## 二、为什么做这个
 
