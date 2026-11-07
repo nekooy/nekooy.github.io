@@ -10,36 +10,36 @@ import {
 } from './hooks'
 import { RootPortal } from '@/components/RootPortal'
 
-export function HeaderContent() {
+export function HeaderContent({ pathName }: { pathName: string }) {
   return (
     <>
-      <AnimatedMenu />
-      <AccessibleMenu />
+      <AnimatedMenu pathName={pathName} />
+      <AccessibleMenu pathName={pathName} />
     </>
   )
 }
 
-function AnimatedMenu() {
+function AnimatedMenu({ pathName }: { pathName: string }) {
   const shouldBgShow = useShouldHeaderMenuBgShow()
   const shouldHeaderMetaShow = useShouldHeaderMetaShow()
 
   return (
-    <AnimatePresence>
+    <AnimatePresence initial={false}>
       {!shouldHeaderMetaShow && (
         <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-          <HeaderMenu isBgShow={shouldBgShow} />
+          <HeaderMenu isBgShow={shouldBgShow} pathName={pathName} />
         </m.div>
       )}
     </AnimatePresence>
   )
 }
 
-function AccessibleMenu() {
+function AccessibleMenu({ pathName }: { pathName: string }) {
   const shouldShow = useShouldAccessibleMenuShow()
 
   return (
     <RootPortal>
-      <AnimatePresence>
+      <AnimatePresence initial={false}>
         {shouldShow && (
           <m.div
             className="fixed z-10 top-12 inset-x-0 flex justify-center pointer-events-none"
@@ -47,7 +47,7 @@ function AccessibleMenu() {
             animate={{ y: 0 }}
             exit={{ y: -20, opacity: 0 }}
           >
-            <HeaderMenu isBgShow />
+            <HeaderMenu isBgShow pathName={pathName} />
           </m.div>
         )}
       </AnimatePresence>
@@ -55,8 +55,10 @@ function AccessibleMenu() {
   )
 }
 
-function HeaderMenu({ isBgShow }: { isBgShow: boolean }) {
-  const pathName = usePathName()
+function HeaderMenu({ isBgShow, pathName }: { isBgShow: boolean; pathName: string }) {
+  const atomPathName = usePathName()
+  // 首屏 SSR 时 Provider 尚未水合，atom 还是空串，用 Astro 传入的 pathName 兜底
+  const currentPath = atomPathName || pathName
   const [mouseX, setMouseX] = useState(0)
   const [mouseY, setMouseY] = useState(0)
   const [radius, setRadius] = useState(0)
@@ -90,7 +92,7 @@ function HeaderMenu({ isBgShow }: { isBgShow: boolean }) {
             href={menu.link}
             title={menu.name}
             icon={menu.icon}
-            isActive={pathName === menu.link}
+            isActive={currentPath === menu.link}
           />
         ))}
       </div>
@@ -118,7 +120,7 @@ function HeaderMenuItem({
         {isActive && (
           <m.i
             className={clsx('iconfont', icon)}
-            initial={{ y: 10, opacity: 0 }}
+            initial={false}
             animate={{ y: 0, opacity: 1 }}
           ></m.i>
         )}

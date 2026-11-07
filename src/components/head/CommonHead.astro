@@ -17,6 +17,14 @@ const titleWithSiteSuffix = title === site.title ? title : `${title} - ${site.ti
 
 <link rel="apple-touch-icon" sizes="180x180" href={site.appleTouchIcon} />
 <link rel="icon" href={site.favicon} />
+<!-- 图标字体在导航栏/社交图标中承担首屏字形，提前下载避免图标晚一拍出现 -->
+<link
+  rel="preload"
+  href="/fonts/iconfont.woff2?t=1716210197380"
+  as="font"
+  type="font/woff2"
+  crossorigin="anonymous"
+/>
 <!-- L'Internationale, 
   Sera le genre humain. -->
 <title>{titleWithSiteSuffix}</title>

@@ -1,16 +1,17 @@
 import { AnimatePresence, m } from 'framer-motion'
-import { useShouldHeaderMetaShow, useIsMobile } from './hooks'
+import { useShouldHeaderMetaShow } from './hooks'
 
+/** 桌面端固定在左上角的站点 Logo。 */
 export function AnimatedLogo() {
-  const isMobile = useIsMobile()
+  return <Logo />
+}
+
+/** 移动端居中的站点 Logo：文章页滚动后让位给标题信息。 */
+export function MobileAnimatedLogo() {
   const shouldHeaderMetaShow = useShouldHeaderMetaShow()
 
-  if (!isMobile) {
-    return <Logo />
-  }
-
   return (
-    <AnimatePresence>
+    <AnimatePresence initial={false}>
       {!shouldHeaderMetaShow && (
         <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
           <Logo />

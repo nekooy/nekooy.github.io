@@ -7,7 +7,6 @@ import {
   hasMetaInfoAtom,
 } from '@/store/metaInfo'
 import { pageScrollLocationAtom, pageScrollDirectionAtom } from '@/store/scrollInfo'
-import { isMobileAtom } from '@/store/viewport'
 import { floor } from 'lodash-es'
 
 const threshold = 60
@@ -30,10 +29,6 @@ export function useHasMetaInfo() {
 export function useShouldHeaderMenuBgShow() {
   const scrollY = useAtomValue(pageScrollLocationAtom)
   return scrollY < threshold
-}
-
-export function useIsMobile() {
-  return useAtomValue(isMobileAtom)
 }
 
 export function useShouldHeaderMetaShow() {

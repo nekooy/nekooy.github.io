@@ -7,7 +7,7 @@ export function HeaderMeta() {
   const shouldShow = useShouldHeaderMetaShow()
 
   return (
-    <AnimatePresence>
+    <AnimatePresence initial={false}>
       {shouldShow && (
         <m.div
           className="absolute inset-0 z-1 flex items-center justify-between md:px-10"

@@ -14,6 +14,8 @@ export function HeaderDrawer({ zIndex = 999 }: { zIndex?: number }) {
 
   useEffect(() => {
     if (ready) return
+    // 桌面端抽屉被 CSS 隐藏，不需要预取面板
+    if (window.matchMedia('(min-width: 768px)').matches) return
     const prefetch = () => setReady(true)
     if ('requestIdleCallback' in window) {
       const id = window.requestIdleCallback(prefetch, { timeout: 3000 })

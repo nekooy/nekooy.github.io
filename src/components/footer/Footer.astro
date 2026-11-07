@@ -2,6 +2,7 @@
 import { ThemeSwitch } from './ThemeSwitch'
 import { author, footer } from '@/config.json'
 import { getAllPostsWordCount } from '@/utils/content'
+import { getDiffInDays } from '@/utils/date'
 import { RunningDays } from './RunningDays'
 import Link from './Link.astro'
 
@@ -10,6 +11,7 @@ const thisYear = new Date().getFullYear()
 const copyDate = sinceYear === thisYear ? thisYear : `${sinceYear}–${thisYear}`
 
 const wordCount = await getAllPostsWordCount()
+const runningDays = getDiffInDays(new Date(footer.startTime))
 
 const wordCountStr = (wordCount / 1000).toFixed(1) + 'k'
 ---
@@ -38,7 +40,7 @@ const wordCountStr = (wordCount / 1000).toFixed(1) + 'k'
       </Link>
     </div>
     <div>
-      <RunningDays client:only="react" />
+      <RunningDays initialDays={runningDays} client:load />
       <span class="select-none opacity-50">|</span>
       <span>共嘚嘚了 {wordCountStr} 字</span>
     </div>
