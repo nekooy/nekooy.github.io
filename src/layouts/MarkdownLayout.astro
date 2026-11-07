@@ -23,7 +23,7 @@ const KatexStyles = hasMath ? (await import('@/components/post/KatexStyles.astro
 ---
 
 <Layout title={title} description={description} image={image}>
-  {KatexStyles && <KatexStyles />}
+  {KatexStyles && <KatexStyles slot="head" />}
   <Provider
     pathName={Astro.url.pathname}
     title={mdTitle}
